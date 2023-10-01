@@ -8,15 +8,15 @@ import iconCalorias from '../../asset/icons/calorias.png'
 
 function Inicio() {
   return (
-    <div className='text-white bg-[#333]'>
+    <div className='text-white bg-[#333] font-Montserrat'>
       {/* banner principal */}
       <div className='flex'>
-        <div className='flex flex-col absolute left-28 bottom-[7rem] gap-14'>
-          <div className='text-6xl uppercase flex flex-col gap-5'>
-            <p className='font-medium'>Transforma</p>
-            <p className='font-light'>Tu cuerpo</p>
+        <div className='flex flex-col absolute left-24 bottom-[7rem] gap-14'>
+          <div className='text-6xl uppercase flex flex-col gap-5 tracking-[10px]'>
+            <p className=' font-bold'>Transforma</p>
+            <p className='font-extralight'>Tu cuerpo</p>
           </div>
-          <div className='text-2xl font-light'>
+          <div className='text-2xl font-extralight'>
             <p >Vuélvete <snap className='text-[#EFB810]'>fit</snap></p>
           </div>
           <div>
@@ -55,7 +55,7 @@ function Inicio() {
       {/* motivacion */}
       <div className='flex flex-col items-end justify-center'>
         <div className='flex flex-col bg-[#EFB810] text-black w-[724px] h-[478px] gap-11 justify-center items-center absolute right-28'>
-          <p className='text-4xl font-bold text-center uppercase'>Nunca es tarde <br/> para empezar</p>
+          <p className='text-4xl font-bold text-center uppercase tracking-[10px]'>Nunca es tarde <br/> para empezar</p>
           <p className='text-justify text-xl'>Lorem ipsum dolor sit amet, consectetur <br/> adipiscing elit. Nulla pulvinar ipsum sed <br/> massa maximus convallis. Nulla facilisi. Sed <br/> eget tortor nibh. Nunc at pulvinar nulla, ac <br/> volutpat turpis. In hac habitasse platea <br/> dictumst. </p>
         </div>
         <div>

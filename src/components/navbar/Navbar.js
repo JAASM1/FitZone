@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
-    <div className='w-full m-0 p-0'>
+    <div className='w-full m-0 p-0 font-Montserrat'>
         <div className='bg-black'>
             <Link to = '/'>
                 <h1 className='text-white text-4xl p-6 pl-10 font-medium'>FIT ZONE</h1>
