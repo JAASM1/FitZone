@@ -1,6 +1,6 @@
 import React from 'react'
 import img1 from '../../asset/img/inicio/img1.jpg'
-// import img2 from '../../asset/img/inicio/mujerviendoalvacio 1.png'
+import img2 from '../../asset/img/inicio/img2.jpg'
 
 import iconEjercicio from '../../asset/icons/pesa (1).png'
 import iconNutricion from '../../asset/icons/nutricion.png'
@@ -29,7 +29,7 @@ function Inicio() {
       </div>
 
       {/* Lo que ofrecemos */}
-      <div className='flex flex-col p-16 gap-20'>
+      <div className='flex flex-col p-20 gap-20'>
         <div>
           <p className='text-3xl font-bold uppercase'>Lo que <br/>ofrecemos</p>
         </div>
@@ -53,13 +53,13 @@ function Inicio() {
       </div>
 
       {/* motivacion */}
-      <div>
-        <div>
-          <p>Nunca es tarde para empezar</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pulvinar ipsum sed massa maximus convallis. Nulla facilisi. Sed eget tortor nibh. Nunc at pulvinar nulla, ac volutpat turpis. In hac habitasse platea dictumst. </p>
+      <div className='flex flex-col items-end justify-center'>
+        <div className='flex flex-col bg-[#EFB810] text-black w-[724px] h-[478px] gap-11 justify-center items-center absolute right-28'>
+          <p className='text-4xl font-bold text-center uppercase'>Nunca es tarde <br/> para empezar</p>
+          <p className='text-justify text-xl'>Lorem ipsum dolor sit amet, consectetur <br/> adipiscing elit. Nulla pulvinar ipsum sed <br/> massa maximus convallis. Nulla facilisi. Sed <br/> eget tortor nibh. Nunc at pulvinar nulla, ac <br/> volutpat turpis. In hac habitasse platea <br/> dictumst. </p>
         </div>
         <div>
-          {/* <image src={img2}></image> */}
+          <img src={ img2 } alt=''/>
         </div>
       </div>
 
