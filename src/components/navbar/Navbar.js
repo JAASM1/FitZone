@@ -2,34 +2,37 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import iconEjercicios from '../../asset/icons/pesa (1).png'
-import iconNutricion from '../../asset/icons/nutricion.png'
-import iconCalorias from '../../asset/icons/calorias.png'
-
-
 function Navbar() {
   return (
-    <div className='w-full m-0 p-0'>
-        <div className='bg-[#333] flex gap-20 justify-center items-center p-4'>
-            <div className='basis-4/6 text-white text-3xl p-0'>
-                <Link to='/'>
-                    <p className='transition ease-in-out delay-150 hover:-translate-y-2 hover:scale-100 duration-300'>Home</p>
-                    
-                </Link>
-            </div>
-            <div>
+    <div className='w-full m-0 p-0 font-Montserrat'>
+        <div className='bg-black'>
+            <Link to = '/'>
+                <h1 className='text-white text-4xl p-6 pl-10 font-medium'>FIT ZONE</h1>
+            </Link>
+        </div>
+
+        <div className='bg-[#333] absolute left-10 px-8 pt-6 pb-9'>
+            <Link to='/'>
+                <p className='uppercase  text-white text-xl'>Inicio</p>        
+            </Link>
+        </div>
+
+        <div className='bg-[#EFB810] flex gap-20 items-center justify-end p-6 static'>
+            
+
+            <div className=''>
                 <Link to='/Ejercicios'>
-                    <img src={iconEjercicios} className='flex-initial w-[3.5rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'></img>
+                    <p className='text-white uppercase font-medium'>Ejercicios</p>
                 </Link>
             </div>
             <div>
                 <Link to = '/Nutricion'>
-                    <img src={iconNutricion} className='flex-initial w-[3.5rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'></img>
+                    <p className='text-white uppercase font-medium'>Nutricion</p>
                 </Link>
             </div>
-            <div>
+            <div className=''>
                 <Link to = '/Calorias'>
-                    <img src={iconCalorias} className='flex-initial w-[3.5rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300'></img>
+                    <p className='text-white uppercase font-medium'>Calorias</p>
                 </Link>
             </div>
         </div>
