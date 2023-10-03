@@ -11,6 +11,9 @@ import Inicio from './page/Inicio/Inicio'
 import Ejercicios from './page/ejercicios/Ejercicios'
 import Nutricion from './page/nutricion/Nutricion'
 import Calorias from './page/calorias/Calorias'
+import Credenciales from './page/login/credenciales';
+import IniciarSesion from './page/login/iniciosesion';
+import Registrarse from './page/login/registrarse';
 
 const AppRouts = () => {
   let routes = useRoutes([
@@ -18,6 +21,9 @@ const AppRouts = () => {
     {path: '/Ejercicios', element: <Ejercicios></Ejercicios>},
     {path: '/Nutricion', element: <Nutricion></Nutricion>},
     {path: '/Calorias', element: <Calorias></Calorias>},
+    {path: '/Credenciales', element: <Credenciales></Credenciales>},
+    {path: '/Iniciar sesion', element: <IniciarSesion></IniciarSesion>},
+    {path: '/Registrarse' , element: <Registrarse></Registrarse>},
   ])
   return routes
 }

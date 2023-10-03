@@ -5,6 +5,7 @@ import img2 from '../../asset/img/inicio/img2.jpg'
 import iconEjercicio from '../../asset/icons/pesa (1).png'
 import iconNutricion from '../../asset/icons/nutricion.png'
 import iconCalorias from '../../asset/icons/calorias.png'
+import { Link } from 'react-router-dom'
 
 function Inicio() {
   return (
@@ -20,7 +21,9 @@ function Inicio() {
             <p >Vuélvete <snap className='text-[#EFB810]'>fit</snap></p>
           </div>
           <div>
-            <button className='border-2 border-[#EFB810] p-2 px-5 rounded-full font-medium'>Iniciar ahora</button>
+            <Link to='/Credenciales'>
+              <button className='border-2 border-[#EFB810] p-2 px-5 rounded-full font-medium'>Iniciar ahora</button>
+            </Link>
           </div>   
         </div>
         <div className='static'>
