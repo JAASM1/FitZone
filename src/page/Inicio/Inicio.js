@@ -1,6 +1,7 @@
 import React from 'react'
 import img1 from '../../asset/img/inicio/img1.jpg'
 import img2 from '../../asset/img/inicio/img2.jpg'
+import imgMovil from '../../asset/img/inicio/imgMovil.jpg'
 
 import iconEjercicio from '../../asset/icons/pesa (1).png'
 import iconNutricion from '../../asset/icons/nutricion.png'
@@ -26,8 +27,11 @@ function Inicio() {
             </Link>
           </div>   
         </div>
-        <div className='static'>
-          <img src={img1} alt='' className=''></img>
+        <div className='max-md:hidden'>
+          <img src={img1} alt=''></img>
+        </div>
+        <div className='md:hidden'>
+          <img src={imgMovil} alt=''></img>
         </div>
       </div>
 
