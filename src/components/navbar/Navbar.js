@@ -17,9 +17,9 @@ function Navbar() {
             </Link>
         </div>
 
-        <div className='bg-[#EFB810] flex md:gap-7 gap-5 items-center max-md:justify-center justify-end p-6 max-md:h-16'>
+        <div className='bg-[#EFB810] flex md:gap-7 gap-5 items-center max-md:justify-center justify-end p-6 max-md:h-16 max-md:text-xs'>
 
-            <div className='bg-[#333] py-5 px-3 md:hidden'>
+            <div className='bg-[#333] py-6 px-4 md:hidden'>
                 <Link to='/'>
                     <p className='uppercase  text-white md:text-xl'>Inicio</p>        
                 </Link>
