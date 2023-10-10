@@ -5,18 +5,13 @@ function footer() {
   return (
     <div className='bg-[#333] py-14 text-white flex flex-col gap-y-7 font-Montserrat tracking-[1.5px]'>
         <div className='flex justify-center items-center'>
-            <button className='border-[#EFB810] border-2 text-white font-bold uppercase text-sm px-24 py-4 rounded-xl'>Arriba</button>
+            <button className='border-[#EFB810] border-2 text-white font-bold uppercase md:text-sm text-xs md:px-24 md:py-4 px-12 py-2 rounded-xl'>Arriba</button>
         </div>
-        <div className='grid grid-cols-3 mx-16'>
-
-          <div className='flex flex-col gap-8'>
-            <p className='font-bold text-lg uppercase'>Sobre FitZone</p>
-            <p className='mr-10 font-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pulvinar ipsum sed massa maximus convallis. Nulla facilisi. Sed eget tortor nibh. Nunc at pulvinar nulla, ac volutpat turpis. In hac habitasse platea dictumst. </p>
-          </div>
-
-          <div className='flex flex-col items-center gap-12'>
+        
+        <div className='grid md:grid-cols-3 mx-16'>
+          <div className='flex flex-col items-center md:gap-12 gap-5'>
             <p className='font-bold uppercase'>Siguenos</p>
-            <div className='flex gap-5'>
+            <div className='flex gap-6 max-md:pb-6'>
               {/* twitter */}
               <a href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#EFB810" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -47,9 +42,16 @@ function footer() {
             </div>
           </div>
 
-          <div className='flex flex-col items-end text-end'>
+          <div className='flex flex-col gap-8 max-md:items-center'>
+            <p className='font-bold md:text-lg text-xs uppercase'>Sobre FitZone</p>
+            <p className='md:mr-10 md:font-light font-extralight max-md:text-xs max-md:text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pulvinar ipsum sed massa maximus convallis. Nulla facilisi. Sed eget tortor nibh. Nunc at pulvinar nulla, ac volutpat turpis. In hac habitasse platea dictumst. </p>
+          </div>
+
+
+
+          <div className='flex flex-col md:items-end md:text-end text-center pt-6'>
             <p className='text-lg font-bold uppercase'>Explora FitZone</p>
-            <div className='font-light pt-8'>
+            <div className='font-light md:pt-8 pt-6'>
               <Link to='/'>
                   <p className='uppercase'>Inicio</p>        
               </Link>
