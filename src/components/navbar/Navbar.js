@@ -7,18 +7,23 @@ function Navbar() {
     <div className='w-full m-0 p-0 font-Montserrat'>
         <div className='bg-black'>
             <Link to = '/'>
-                <h1 className='text-white text-4xl p-6 pl-10 font-medium'>FIT ZONE</h1>
+                <h1 className='text-white text-4xl p-6 pl-10 font-medium max-md:text-center'>FIT ZONE</h1>
             </Link>
         </div>
 
-        <div className='bg-[#333] absolute left-10 px-8 pt-6 pb-9'>
+        <div className='bg-[#333] absolute left-10 px-8 pt-6 pb-9 max-md:hidden'>
             <Link to='/'>
                 <p className='uppercase  text-white text-xl'>Inicio</p>        
             </Link>
         </div>
 
-        <div className='bg-[#EFB810] flex gap-20 items-center justify-end p-6 static'>
-            
+        <div className='bg-[#EFB810] flex md:gap-7 gap-5 items-center max-md:justify-center justify-end p-6 max-md:h-16 max-md:text-xs'>
+
+            <div className='bg-[#333] py-6 px-4 md:hidden'>
+                <Link to='/'>
+                    <p className='uppercase  text-white md:text-xl'>Inicio</p>        
+                </Link>
+            </div>
 
             <div className=''>
                 <Link to='/Ejercicios'>

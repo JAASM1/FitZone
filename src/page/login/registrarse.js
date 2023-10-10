@@ -4,7 +4,7 @@ import CBUM from '../../asset/img/login/cbum.jpg'
 function Registrarse(){
     return(
         <div className="font-Montserrat">
-            <img src={CBUM} className='w-screen h-[850px]'/>
+            <img src={CBUM} alt="" className='w-screen h-[850px]'/>
             <div 
                 className="bg-[#000000] absolute w-[40%] h-[75%] top-[48%] ml-32 rounded-[8%]">
             </div>
