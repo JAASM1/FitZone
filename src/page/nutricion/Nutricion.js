@@ -7,22 +7,22 @@ function Nutricion() {
     <div className='font-Montserrat'>
           {/* banner prinicipal */}
         <div>
-          <img src={banner} alt='Tenedor y cinta métrica sobre fondo amarillo' className='w-full h-[625px]'/>
+          <img src={banner} alt='Tenedor y cinta métrica sobre fondo amarillo' className='w-full h-[25rem] md:h-[625px]'/>
           <div className='absolute left-[10%] top-[36%]'>
             <div className='w-[11.4375rem] h-[2.9375rem] border border-black flex items-center justify-center'>
                 <p className='text-1.5xl leading-normal tracking-wider uppercase text-center '>Nutrición</p>
             </div>
           </div>
           <div className='absolute left-[10%] top-[48%]'>
-            <p className='font-[700] text-white text-[3.75rem]'>Empieza una dieta</p>
-            <p className='font-[700] text-white text-[3.75rem]'>balanceada hoy</p>
+            <p className='font-[700] text-white text-[2rem] md:text-[3.75rem]'>Empieza una dieta</p>
+            <p className='font-[700] text-white text-[2rem] md:text-[3.75rem]'>balanceada hoy</p>
           </div>
         </div>
           {/* beneficios */}
         <div>
-          <div className='w-full h-[30.875rem] bg-black relative flex justify-center items-center'>
-            <p className='text-white absolute left-[37%] top-[9%] text-lg'>Beneficios de tener una buena alimentación</p>
-            <div className='flex flex-row space-x-[15rem]'>
+          <div className='w-full h-fit md:h-[30.875rem] bg-black relative flex justify-center items-center'>
+            <p className='text-white absolute top-[2%] text-center md:left-[37%] md:top-[9%] text-lg'>Beneficios de tener una buena alimentación</p>
+            <div className='flex p-20 mt-7 md:mt-0 md:p-0 flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-[15rem]'>
               <div className='w-[14.25rem] h-[14.25rem] rounded-[1.25rem] border border-amber-300 relative'>
                 <p className='text-white font-[400] text-start mt-6 ml-7 mr-7 mb-2'>Mejora la salud cardiovascular</p>
                 <p className='text-white font-[100] text-[0.8rem] w-[11rem] ml-7 mr-7'>Una alimentación equilibrada, 
@@ -43,12 +43,12 @@ function Nutricion() {
           </div>
         </div>
         {/* banner pequeño */}
-        <div className='w-full h-[16.81rem] bg-amber-400 relative'>
-          <p className='text-white font-bold text-[1.40rem] tracking-widest absolute left-[30%] top-[20%]'>Toda la información nutrimental que necesitas</p>
-          <p className='w-[70.5rem] text-center text-white font-[100] absolute left-[14%] top-[40%] text-[1.1rem]'>
+        <div className='w-full h-[35rem] md:h-[16.81rem] bg-amber-400 relative  md:block'>
+          <p className='text-white w-[22rem] md:w-fit font-bold text-[1.2rem] md:text-[1.40rem] tracking-widest absolute text-center left-[7%] top-[7%] md:left-[30%] md:top-[20%]'>Toda la información nutrimental que necesitas</p>
+          <p className=' w-[10rem] md:w-[70.5rem] text-center text-white font-[100] absolute left-[29%] top-[22%] md:left-[14%] md:top-[40%] text-[1.1rem]'>
           Fitzone extrae la información nutrimental de cualquier alimento del cual desees saber más.
           </p>
-          <p className='w-[60.5rem] text-center text-white font-[100] absolute left-[20%] top-[50%] text-[1rem]'>
+          <p className='w-[10rem] md:w-[60.5rem] text-center text-white font-[100] absolute left-[28%] md:left-[20%] top-[58%] md:top-[50%] text-[1.1rem] md:text-[1rem]'>
           Desde blogs de comida hasta menús y recetas, puede leer cualquier texto y calcular los datos nutricionales correspondientes.
           </p>
         </div>
