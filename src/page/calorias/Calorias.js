@@ -1,5 +1,5 @@
 import React from 'react'
-import box from '../../asset/img/calorias/Box calo.jpg'
+import fondo from '../../asset/img/calorias/pesomuerto.jpg'
 import { GrSearch } from "react-icons/gr";
 
 function Calorias() {
@@ -7,9 +7,13 @@ function Calorias() {
     <div className='font-Montserrat'>
       {/* banner principal */}
       <div>
-        <img src={box} alt='' className='w-full h-[625px]'/>
-        <div className='absolute ml-[33%] top-[78%]'>
-          <p className='text-6xl font-bold'>
+        <div>
+          <img src={fondo} alt=''/>
+        </div>
+        <div className='absolute flex inset-0 text-2xl justify-center top-[28%] font-bold 
+          sm:text-4xl sm:top-[50%] sm:ml-[23%] 
+          md:text-6xl md:justify-center md:items-end md:ml-[30%]'>
+          <p>
             <span className='text-[#EFB810]'>Construye</span> <span className='text-white'>tu mejor versión</span> <br/> 
             <span className='text-white'>este año</span> <span className='text-[#EFB810]'>sin excusas</span>
           </p>
@@ -17,17 +21,19 @@ function Calorias() {
       </div>
       {/* Motor de busqueda */}
       <div className='bg-[#EFB810] p-6'>
-        <input className='w-[40%] bg-[#333333] placeholder-white rounded-md h-10 text-center ml-[28%]' 
+        <input className='bg-[#ffffff] placeholder-black rounded-md h-10 text-center
+          ml-16
+          sm:w-[80%] sm:ml-12
+          md:w-[40%] md:ml-[28%]' 
           type='text' 
           placeholder='Busca una actividad para saber cuantas calorias vas a quemar'
         />
-        <button className='rounded-full bg-white w-16 h-16'>
-          <div className='ml-6'>
+        <button>
+          <div className='ml-5 text-2xl'>
             <GrSearch/>
           </div>
         </button>
       </div>
-
     </div>
   )
 }

@@ -21,7 +21,7 @@ function Inicio() {
             <p >Vuélvete <snap className='text-[#EFB810]'>fit</snap></p>
           </div>
           <div>
-            <Link to='/Credenciales'>
+            <Link to='/Iniciar sesion'>
               <button className='border-2 border-[#EFB810] p-2 px-5 rounded-full font-medium'>Iniciar ahora</button>
             </Link>
           </div>   
