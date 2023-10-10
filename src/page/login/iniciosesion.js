@@ -8,7 +8,7 @@ function iniciarSesion(){
             <picture>
                 <img src={InisioSesion} alt='' className='h-96 sm:h-full sm:w-full md:h-screen md:w-screen'/>
             </picture>
-            <div 
+            <div
                 className='bg-[#272733] absolute rounded-[8%] opacity-90
                 w-[80%] h-[40%] top-[22%] ml-[10%]
                 sm:w-[55%] sm:h-[62%] sm:top-[27%] sm:ml-[22.5%]
@@ -28,7 +28,7 @@ function iniciarSesion(){
                         md:ml-[100%] md:text-base'>
                         CORREO
                     </label>
-                    <br/>
+                    <br />
                     <input className='bg-[#717171] placeholder-white rounded-2xl 
                         ml-[33%] h-7 pl-4 w-[125%]
                         sm:w-[150%] sm:h-8 sm:ml-[25%] sm:pl-5
