@@ -7,8 +7,7 @@ function Registrarse(){
             <picture>
                 <img src={Registro} alt='' className='h-96 sm:h-full sm:w-full md:h-screen md:w-screen'/>
             </picture>
-            <div 
-                className='bg-[#272733] absolute rounded-[8%] opacity-90
+            <div className='bg-[#272733] absolute rounded-[8%] opacity-90
                 w-[80%] h-[40%] top-[22%] ml-[10.5%]
                 sm:w-[55%] sm:h-[55%] sm:top-[27%] sm:ml-[22%]
                 md:w-[40%] md:h-[75%] md:top-[35%] md:ml-[29%]'>
@@ -81,4 +80,5 @@ function Registrarse(){
         </div>
     )
 }
+
 export default Registrarse
