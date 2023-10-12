@@ -66,7 +66,11 @@ function footer() {
 
               <Link to = '/Calorias'>
                     <p className='uppercase'>Calorias</p>
-              </Link>              
+              </Link>           
+
+              <Link to= '/Bienvenida'>
+                    <p className='uppercase'>Dashboard</p>  
+              </Link>   
             </div>
           </div>
         </div>

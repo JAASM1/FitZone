@@ -14,6 +14,7 @@ import Calorias from './page/calorias/Calorias'
 import IniciarSesion from './page/login/iniciosesion';
 import Registrarse from './page/login/registrarse';
 import Contrasena from './page/login/olvidado';
+import Welcome from './components/Dashboard/welcome'
 
 const AppRouts = () => {
   let routes = useRoutes([
@@ -24,6 +25,7 @@ const AppRouts = () => {
     {path: '/Iniciar sesion', element: <IniciarSesion></IniciarSesion>},
     {path: '/Registrarse' , element: <Registrarse></Registrarse>},
     {path: '/Contraseña', element: <Contrasena></Contrasena>},
+    {path: '/Bienvenida' , element: <Welcome></Welcome>},
   ])
   return routes
 }
