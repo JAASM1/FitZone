@@ -66,7 +66,7 @@ function Nutricion() {
                       className='text-white font-semibold tracking-widest text-[0.8rem] w-[16rem] h-[2.9rem] bg-amber-400 outline-none rounded-3xl pl-4 pr-10'
                     />
                     <button type='submit' className='1cursor-pointer absolute right-0 top-[-7%] left-[85%] bottom-0 mt-4 mr-4 bg-zinc-800 z-10 w-[2.9rem] h-[3.1rem] rounded-full'>
-                      <svg xmlns="http://www.w3.org/2000/svg" className='ml-3 md:ml-3' class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <svg xmlns="http://www.w3.org/2000/svg" className='ml-3 md:ml-[4.5]' class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffbf00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
                         <path d="M21 21l-6 -6" />
