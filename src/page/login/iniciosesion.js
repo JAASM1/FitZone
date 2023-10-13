@@ -1,10 +1,14 @@
 import React from "react";
 import InisioSesion from "../../asset/img/login/pesaTelefono.jpg";
 import { Link } from "react-router-dom";
+import Navbar from '../../components/navbar/Navbar'
+import Footer from '../../components/footer/footer'
+
 
 function iniciarSesion() {
   return (
     <div className="font-Montserrat">
+      <Navbar/>
       <picture>
         <img src={InisioSesion} alt="" className="h-96 sm:h-full sm:w-full md:h-screen md:w-screen"/>
       </picture>
@@ -92,6 +96,7 @@ function iniciarSesion() {
           md:p-5 md:w-[10%] md:top-[98%] md:ml-[51%]">
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

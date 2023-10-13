@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function footer() {
+function Footer() {
   return (
     <div className='bg-[#333] py-14 text-white flex flex-col gap-y-7 font-Montserrat tracking-[1.5px]'>
         <div className='flex justify-center items-center'>
@@ -78,4 +78,4 @@ function footer() {
   )
 }
 
-export default footer
+export default Footer

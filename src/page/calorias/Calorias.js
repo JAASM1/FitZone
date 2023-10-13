@@ -1,10 +1,13 @@
 import React from 'react'
 import fondo from '../../asset/img/calorias/pesomuerto.jpg'
 import { GrSearch } from "react-icons/gr";
+import Navbar from '../../components/navbar/Navbar';
+import Footer from '../../components/footer/footer';
 
 function Calorias() {
   return(
     <div className='font-Montserrat'>
+      <Navbar/>
       {/* banner principal */}
       <div>
         <div>
@@ -34,6 +37,7 @@ function Calorias() {
           </div>
         </button>
       </div>
+      <Footer/>
     </div>
   )
 }
