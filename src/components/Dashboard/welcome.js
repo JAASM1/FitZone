@@ -26,13 +26,23 @@ function Dashboard(){
                     </div>
                 </div>
 
-                <div className="w-[800px] bg-zinc-700 absolute h-[300px] left-[90%] top-[50%]">
-                    <div className="text-white">
+                <div className="w-[800px] bg-zinc-800 absolute h-[300px] left-[90%] top-[50%] rounded-md shadow-md">
+                    <div className="text-white p-2 text-center text-[1.2rem]">
                         Lista de usuarios
                     </div>
 
-                    <div>
-
+                    <div className="w-[600px] h-[200px] absolute left-[10%] flex flex-row justify-between text-white">
+                        <div>
+                            Nombre de usuario
+                        </div>
+                        <div>
+                            Correo
+                        </div>
+                        <div>
+                            <div>
+                                Acciones
+                            </div>
+                        </div>
                     </div>
                 </div>
 
