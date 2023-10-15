@@ -4,6 +4,9 @@ import img2 from '../../asset/img/inicio/img2.jpg'
 import imgMovil from '../../asset/img/inicio/imgMovil.jpg'
 import imgMovil2 from '../../asset/img/inicio/imgMovil2.jpg'
 
+import Navbar from '../../components/navbar/Navbar'
+import Footer from '../../components/footer/footer'
+
 import iconEjercicio from '../../asset/icons/pesa (1).png'
 import iconNutricion from '../../asset/icons/nutricion.png'
 import iconCalorias from '../../asset/icons/calorias.png'
@@ -12,6 +15,7 @@ import { Link } from 'react-router-dom'
 function Inicio() {
   return (
     <div className='text-white bg-[#333] font-Montserrat'>
+      <Navbar/>
       {/* banner principal */}
       <div className='flex'>
         <div className='flex flex-col absolute md:left-24 md:bottom-[7rem] md:gap-14 left-4 pt-20 gap-5'>
@@ -71,7 +75,7 @@ function Inicio() {
           <img src={ imgMovil2 } alt='' className='md:hidden'/>
         </div>
       </div>
-
+    <Footer/>
     </div>
   )
 }

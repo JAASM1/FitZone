@@ -1,10 +1,12 @@
 import React from 'react'
 import banner from '../../asset/img/nutricion/nutricion-banner.jpg'
-
+import Navbar from '../../components/navbar/Navbar'
+import Footer from '../../components/footer/footer'
 
 function Nutricion() {
   return (
     <div className='font-Montserrat'>
+        <Navbar/>
           {/* banner prinicipal */}
         <div>
           <img src={banner} alt='Tenedor y cinta métrica sobre fondo amarillo' className='w-full h-[25rem] md:h-[625px]'/>
@@ -98,7 +100,7 @@ function Nutricion() {
             </div>
           </div>
         </div>
-
+    <Footer/>
     </div>
   )
 }
