@@ -1,8 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import fondo from '../../asset/img/calorias/pesomuerto.jpg'
 import { GrSearch } from "react-icons/gr";
 
 function Calorias() {
+  const [activity, setActivity] = useState('') // Inicializa con una cadena vacía
+  const [caloriesData, setCaloriesData] = useState(null);
+
+  const handleInputChange = (e) => {
+    setActivity(e.target.value); // Actualiza el estado 'activity' con el valor del campo de entrada
+  };
+
+  const handleSearch = async () => {
+    const apiKey = 'WtsnxJSNki7OXcUF1wGyKA==1ElJCbq4rHRH0vur';
+
+    try {
+      const response = await fetch(`https://api.api-ninjas.com/v1/caloriesburned?activity=${activity}`, {
+        method: 'GET',
+        headers: {
+          'X-Api-Key': apiKey,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Error en la solicitud');
+      }
+
+      const data = await response.json();
+      setCaloriesData(data); // Guarda los datos en el estado
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return(
     <div className='font-Montserrat'>
       {/* banner principal */}
@@ -27,12 +57,29 @@ function Calorias() {
           md:w-[40%] md:ml-[28%]' 
           type='text' 
           placeholder='Busca una actividad para saber cuantas calorias vas a quemar'
+          value={activity}
+          onChange={handleInputChange}
         />
-        <button>
+        <button onClick={handleSearch}>
           <div className='ml-5 text-2xl'>
             <GrSearch/>
           </div>
         </button>
+      </div>
+      <div className='bg-black'>
+        {caloriesData && (
+          <div className='flex flex-wrap -mx-5 p-20'>
+            {caloriesData.map((item, index) => (
+              <div key={index} className='text-center w-1/3 px-5 mb-4'>
+                <div className='text-white my-14 bg-[#333] rounded-2xl h-[50%] p-5 font-bold'>
+                  <h3>{item.name}</h3>
+                  <p>Calorías por hora: {item.calories_per_hour}</p>
+                  <p>Duración en minutos: {item.duration_minutes}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
