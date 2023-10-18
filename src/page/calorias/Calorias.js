@@ -76,7 +76,7 @@ function Calorias() {
                   <p className='text-white'>Duración en minutos: {item.duration_minutes}</p>
                 </div>
               </div>
-            ))}
+            ))} 
           </div>
         )}
       </div>
