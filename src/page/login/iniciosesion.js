@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
@@ -9,10 +9,9 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 
 function IniciarSesion() {
   const navigate = useNavigate()
-  const { isLoggedIn, login, logout, loginAdmin } = useAuth();
+  const { login, loginAdmin } = useAuth();
   const [user_email, setEmail] = useState("");
   const [user_password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -24,6 +23,14 @@ function IniciarSesion() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (user_email.trim() === ''){
+      setError("Por favor, ingresa tu correo electrónico antes de continuar.")
+      return;
+    }
+    if (user_password.trim() === ''){
+      setError("Ingresa tu contraseña antes de continuar.")
+      return;
+    }
     try {
       const response = await fetch(
         "http://localhost:8080/fitzone/users/login",
@@ -94,7 +101,7 @@ function IniciarSesion() {
               onSubmit={handleLogin}
               className="bg-[#272733] flex justify-center items-center flex-col px-10 h-[100%] text-[#EFB810]">
               <h1 className="font-bold text-2xl mb-5">Iniciar sesion</h1>
-              <span className="font-serif text-sm mb-2 text-white">o utilice su contraseña de correo electrónico</span>
+              <span className="font-serif text-sm mb-2 text-white">con sus credenciales de usuario</span>
               <input
                 value={user_email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -120,6 +127,11 @@ function IniciarSesion() {
                   <AiOutlineEye className="h-[1rem] text-gray-400" />
                 )}
               </span>
+                
+              {error && (
+                <p className="text-red-500 text-[0.6rem] mt-2">{error}</p>
+              )}  
+
               <Link to='/Contraseña'>
                 <p className="p-5 font-serif">¿Ha olvidado su contraseña?</p>
               </Link>

@@ -3,16 +3,28 @@ import fondo from '../../asset/img/calorias/pesomuerto.jpg'
 import { GrSearch } from "react-icons/gr";
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
+import Swal from 'sweetalert2';
+import { useAuth } from '../../Auth';
 
 function Calorias() {
   const [activity, setActivity] = useState('') // Inicializa con una cadena vacía
   const [caloriesData, setCaloriesData] = useState(null);
-
+  const {isLoggedIn} = useAuth()
   const handleInputChange = (e) => {
     setActivity(e.target.value); // Actualiza el estado 'activity' con el valor del campo de entrada
   };
 
   const handleSearch = async () => {
+    if (!isLoggedIn){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Inicia sesión para ver este contenido",
+        footer: '<a href="/Iniciar sesion">Inicia sesión</a>',
+      });
+      return;
+    }
+
     const apiKey = 'WtsnxJSNki7OXcUF1wGyKA==1ElJCbq4rHRH0vur';
 
     try {
