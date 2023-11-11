@@ -3,13 +3,14 @@ import { useRoutes, BrowserRouter } from 'react-router-dom'
 import './App.css';
 
 //Pages
+<<<<<<< Updated upstream
 import Inicio from './page/Inicio/Inicio'
 import Ejercicios from './page/ejercicios/Ejercicios'
 import Nutricion from './page/nutricion/Nutricion'
 import Calorias from './page/calorias/Calorias'
 import IniciarSesion from './page/login/iniciosesion';
 import Registrarse from './page/login/registrarse';
-import Contrasena from './page/login/olvidado';
+import ContraOlvidado from './page/login/olvidado';
 import Welcome from './components/Dashboard/welcome'
 
 const AppRouts = () => {
@@ -20,7 +21,7 @@ const AppRouts = () => {
     {path: '/Calorias', element: <Calorias></Calorias>},
     {path: '/Iniciar sesion', element: <IniciarSesion></IniciarSesion>},
     {path: '/Registrarse' , element: <Registrarse></Registrarse>},
-    {path: '/Contraseña', element: <Contrasena></Contrasena>},
+    {path: '/Contraseña', element: <ContraOlvidado></ContraOlvidado>},
     {path: '/Bienvenida' , element: <Welcome></Welcome>},
   ])
   return routes
@@ -36,3 +37,6 @@ function App() {
 }
 
 export default App;
+=======
+
+>>>>>>> Stashed changes

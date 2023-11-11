@@ -1,50 +1,37 @@
 import React from 'react';
-import Registro from '../../asset/img/login/boxTelefono.jpg'
-import Vertical from '../../asset/img/login/vertical.jpg'
+import { Link } from 'react-router-dom';
 
 function Registrarse(){
     return(
         <div className='font-Montserrat'>
-            <picture>
-                <img src={Registro} alt='' className='sm:w-screen sm:h-full md:h-screen md:w-screen hidden sm:block md:block'/>
-                <img src={Vertical} alt='' className='h-screen sm:hidden md:hidden'/>
-            </picture>
-            <div className='bg-[#272733] absolute rounded-[60px] opacity-90 w-[328px] h-96 top-[22%] ml-8 sm:top-10 sm:ml-[215px] md:w-[40%] md:h-[84%] md:top-14 md:ml-[29%]'>
-            </div>
-            <div className='flex flex-col'>
-                <p className='text-[#EFB810] absolute font-bold text-2xl top-44 ml-16 sm:top-16 sm:ml-60 md:text-3xl md:top-20 md:ml-[38%]'>
-                    ¿Ya estas registrado?
-                </p>
-                <form className='absolute top-60 sm:top-28 sm:ml-[182px] md:top-[25%] md:ml-[20.5%]'>
-                    <label for='user' className='text-[#EFB810] font-bold text-base ml-24 md:ml-[100%] md:text-base'>
-                        USUARIO
-                    </label> 
-                    <br/>
-                    <input className='bg-[#717171] placeholder-white rounded-2xl h-7 pl-4 w-64 ml-[69px] md:ml-[90%] md:w-[220%] md:h-12 md:pl-5'
-                        id='user' type='text' placeholder='Ronnie Coleman'
-                    />
-                </form>
-                <form className='absolute top-[45.5%] sm:top-[180px] sm:ml-[182px] md:top-[40%] md:ml-[20.5%]'>
-                    <label for='correo' className='text-[#EFB810] font-bold text-base ml-24 md:ml-[100%] md:text-base'>
-                        CORREO
-                    </label> 
-                    <br/>
-                    <input className='bg-[#717171] placeholder-white rounded-2xl h-7 pl-4 w-64 ml-[69px] md:ml-[90%] md:w-[220%] md:h-12 md:pl-5'
-                        id='correo' type='email' placeholder='chanchitofeliz@gmail.com'
-                    />
-                </form>
-                <form className='absolute top-[55%] sm:top-[249px] sm:ml-[182px] md:top-[55%] md:ml-[20.5%]'>
-                    <label for='contra' className='text-[#EFB810] font-bold text-base ml-24 md:ml-[100%] md:text-base'>
-                        CONTRASEÑA
-                    </label> 
-                    <br/>
-                    <input className='bg-[#717171] placeholder-white rounded-2xl h-7 pl-4 w-64 ml-[69px] md:ml-[90%] md:w-[220%] md:h-12 md:pl-5'
-                        id='contra' type='password' placeholder='**************'
-                    />
-                </form>
-                <button className='absolute bg-[#EFB810] text-white rounded-2xl top-[68%] ml-32 w-32 h-8 sm:top-[340px] sm:ml-[315px] md:top-[75%] md:w-40 md:h-10 md:ml-[43%]'>
-                    Registrate
-                </button>
+            <div className='bg-image1 h-screen bg-cover flex justify-center items-center'>
+                <div className="bg-[#272733]  relative overflow-hidden rounded-3xl w-[750px] h-[480px]">
+                    <div className="absolute top-0 h-[100%] transition-all ease-in-out left-64 w-[80%]">
+                        <form className="bg-[#272733]  flex justify-center items-center flex-col px-40 h-[100%] text-[#EFB810]" action=''>
+                            <h1 className="font-bold text-2xl mb-5">Crea tu cuenta</h1>
+                            <span className="font-serif text-sm mb-2 text-center text-white">o utilice su correo electrónico para registrarse</span>
+                            <input type="text" id="nombre" placeholder="Nombre" className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none my-5 mx-15 p-2 rounded-md font-mono"/>
+                            <input type="email" id="email" placeholder="Correo" className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"/>
+                            <input type="password" id="password" placeholder="Contraseña" className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none my-5 mx-15 p-2 rounded-md font-mono"/>
+                            <button className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono" type='submit'>
+                                Registrarse
+                            </button>
+                        </form>
+                    </div>
+                    <div className="absolute top-0 right-[50%] w-[50%] h-[100%] overflow-hidden rounded-br-[100px] rounded-tr-[150px] z-96 transition-all ease-in-out">
+                        <div className="bg-[#EFB810] relative h-[100%] w-[200%] transition-all ease-in-out text-[#272733]">
+                            <div className="absolute w-[50%] h-[100%] flex justify-center items-center flex-col text-center top-0 transition-all ease-in-out px-[30px]">
+                                <h1 className="font-bold text-2xl">¡Bienvenido GymBro!</h1>
+                                <p className="m-[40px] font-serif text-sm">Introduzca sus datos personales para utilizar todas las funciones del sitio web</p>
+                                <Link to='/Iniciar sesion'>
+                                    <button className=" bg-transparent border-[#272733] p-2 border-2 rounded-lg w-40 font-mono">
+                                        Iniciar sesion
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
