@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { gapi } from "gapi-script";
+import GoogleLogin from "react-google-login";
 
-function iniciarSesion() {
+function InicioSesion() {
+  const clientId = "315483207981-t4li45mjhc2va7mq4f84q7udak6mqk02.apps.googleusercontent.com";
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const start = () => {
+      gapi.auth2.init({
+        clientId: clientId,
+      })
+    }
+    gapi.load("client:auth2", start)
+  }, [])
+
+  const onSuccess = (response) => {
+    setUser(response.profileObj);
+  }
+  const onFailure = () => {
+    console.log("Something went wrong")
+  }
+
   return (
     <div className="font-Montserrat">
       <div className="bg-image h-screen bg-cover flex justify-center items-center">
@@ -20,6 +41,9 @@ function iniciarSesion() {
                   Acceder
                 </button>
               </Link>
+              <div className="pt-5">
+                <GoogleLogin clientId={clientId} onSuccess={onSuccess} onFailure={onFailure} cookiePolicy="single_host_policy"/>
+              </div>
             </form>
           </div>
           <div className="absolute top-0 left-[50%] w-[50%] h-[100%] overflow-hidden rounded-bl-[100px] rounded-tl-[150px] z-96 transition-all ease-in-out">
@@ -41,4 +65,4 @@ function iniciarSesion() {
   );
 }
 
-export default iniciarSesion;
+export default InicioSesion;
