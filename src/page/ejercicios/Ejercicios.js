@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import bnnEjercicos from "../../asset/img/ejercicios/bnnEjercicio1.jpg";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
+
 import { useAuth } from "../../Auth";
 import Swal from "sweetalert2";
+
 
 function Ejercicios() {
   const [count, setCount] = useState(""); // count recibe el valor del button
   const [data, setData] = useState(); //variables de extraccion de datos de la api
+
   const { isLoggedIn } = useAuth()
 
   //conexion con la api
@@ -45,7 +48,7 @@ function Ejercicios() {
       });
     }
   };
-
+ 
   return (
     <>
       <Navbar/>
