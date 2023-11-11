@@ -2,17 +2,31 @@ import React, { useState } from 'react';
 import banner from '../../asset/img/nutricion/nutricion-banner.jpg';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/footer';
+import { useAuth } from '../../Auth';
+import Swal from 'sweetalert2';
 
 function Nutricion() {
   const [nutrition, setNutrition] = useState('');
   const [nutritionData, setNutritionData] = useState(null);
   const [error, setError] = useState(null);
+  const {isLoggedIn} = useAuth()
 
   const handleInputChange = (e) => {
     setNutrition(e.target.value);
   }
 
   const getNutrition = async () => {
+
+    if (!isLoggedIn){
+      Swal.fire({
+        icon: "error",
+        title: "Oops... :(",
+        text: "Debes iniciar sesión para ver este contenido.",
+        footer: '<a href="/Iniciar sesion">Inicia sesión</a>',
+      });
+      return;
+    }
+
     if (nutrition.trim() === '') {
       setError('Por favor, ingresa un alimento antes de buscar.');
       return;

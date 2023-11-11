@@ -3,22 +3,55 @@ import bnnEjercicos from "../../asset/img/ejercicios/bnnEjercicio1.jpg";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
 
+import { useAuth } from "../../Auth";
+import Swal from "sweetalert2";
+
+
 function Ejercicios() {
   const [count, setCount] = useState(""); // count recibe el valor del button
   const [data, setData] = useState(); //variables de extraccion de datos de la api
 
+  const { isLoggedIn } = useAuth()
+
   //conexion con la api
+  // useEffect(() => {
+  //   fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${count}`, {
+  //     method: "GET",
+  //     headers: { "X-Api-Key": "wHcDfLI1fmto6kZltETAlw==P3Nn9u6EhOKG5MfL" },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data));
+  // }, [count]);
+
   useEffect(() => {
-    fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${count}`, {
-      method: "GET",
-      headers: { "X-Api-Key": "wHcDfLI1fmto6kZltETAlw==P3Nn9u6EhOKG5MfL" },
-    })
-      .then((response) => response.json())
-      .then((data) => setData(data));
-  }, [count]);
+    if (isLoggedIn) {
+      fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${count}`, {
+        method: "GET",
+        headers: {
+          "X-Api-Key": "wHcDfLI1fmto6kZltETAlw==P3Nn9u6EhOKG5MfL",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => setData(data));
+    }
+  }, [count, isLoggedIn]);
+
+  const handleButtonClick = (muscle) => {
+    if (isLoggedIn) {
+      setCount(muscle);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Inicia sesión para ver este contenido",
+        footer: '<a href="/Iniciar sesion">Inicia sesión</a>',
+      });
+    }
+  };
+ 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="font-Montserrat bg-[#333333] text-white">
         <div className="flex items-center">
           <div className="flex flex-col absolute left-48">
@@ -48,7 +81,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("adductors");
+                  handleButtonClick("adductors")
                 }}
               >
                 Adductor
@@ -57,7 +90,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("abductors");
+                  handleButtonClick("abductors");
                 }}
               >
                 Abductors
@@ -66,7 +99,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("abdominals");
+                  handleButtonClick("abdominals");
                 }}
               >
                 Abdominals
@@ -75,7 +108,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("biceps");
+                  handleButtonClick("biceps");
                 }}
               >
                 Biceps
@@ -84,7 +117,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("chest");
+                  handleButtonClick("chest");
                 }}
               >
                 Chest
@@ -93,7 +126,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("calves");
+                  handleButtonClick("calves");
                 }}
               >
                 Calves
@@ -104,7 +137,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("forearms");
+                  handleButtonClick("forearms");
                 }}
               >
                 Forearms
@@ -113,7 +146,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("glutes");
+                  handleButtonClick("glutes");
                 }}
               >
                 Glutes
@@ -122,7 +155,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("hamstrings");
+                  handleButtonClick("hamstrings");
                 }}
               >
                 Hamstrings
@@ -131,7 +164,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("lower_back");
+                  handleButtonClick("lower_back");
                 }}
               >
                 Lower back
@@ -140,7 +173,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("lats");
+                  handleButtonClick("lats");
                 }}
               >
                 Lats
@@ -149,7 +182,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("middle_back");
+                  handleButtonClick("middle_back");
                 }}
               >
                 Middle back
@@ -160,7 +193,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("neck");
+                  handleButtonClick("neck");
                 }}
               >
                 Neck
@@ -169,7 +202,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("triceps");
+                  handleButtonClick("triceps");
                 }}
               >
                 Triceps
@@ -178,7 +211,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("traps");
+                  handleButtonClick("traps");
                 }}
               >
                 Traps
@@ -187,7 +220,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  setCount("quadriceps");
+                  handleButtonClick("quadriceps");
                 }}
               >
                 Quadriceps

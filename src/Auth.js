@@ -15,6 +15,10 @@ export function AuthProvider({ children }) {
     const loginAdmin = () => {
         setIsAdmin(true)
     }
+
+    const logoutAdmin = () => {
+      setIsAdmin(false)
+    }
   
     const logout = () => {
       setIsLoggedIn(false);
@@ -24,7 +28,7 @@ export function AuthProvider({ children }) {
     };
 
     return (
-      <AuthContext.Provider value={{ isLoggedIn, login, logout, loginAdmin }}>
+      <AuthContext.Provider value={{ isLoggedIn, login, logout, loginAdmin, logoutAdmin, isAdmin }}>
         {children}
       </AuthContext.Provider>
     );
