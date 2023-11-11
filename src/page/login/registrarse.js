@@ -17,6 +17,7 @@ function Registrarse(){
         e.preventDefault()
         if (user_email.trim() === '' || user_password.trim() === '' || user_name.trim() === ''){
             setError("Por favor, ingresa todos los campos.")
+            return;
         }
 
         try {
@@ -87,6 +88,9 @@ function Registrarse(){
                             value={user_password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none my-5 mx-15 p-2 rounded-md font-mono"/>
+                            {error && (
+                                <p className='text-red-500 text-sm mb-2'>{error}</p>
+                            )}
                             <button className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono" type='submit'>
                                 Registrarse
                             </button>
