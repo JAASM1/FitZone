@@ -3,6 +3,7 @@ import { useRoutes, BrowserRouter } from 'react-router-dom'
 import './App.css';
 
 //Pages
+<<<<<<< Updated upstream
 import Inicio from './page/Inicio/Inicio'
 import Ejercicios from './page/ejercicios/Ejercicios'
 import Nutricion from './page/nutricion/Nutricion'
@@ -36,3 +37,6 @@ function App() {
 }
 
 export default App;
+=======
+
+>>>>>>> Stashed changes
