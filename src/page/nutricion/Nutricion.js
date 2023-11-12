@@ -49,7 +49,7 @@ function Nutricion() {
       }
 
       // Almacena la palabra buscada en la base de datos
-      await fetch("http://localhost:8080/fitzone/guardarBusqueda", {
+      await fetch("http://localhost:8080/fitzone/guardarBusquedaNutricion", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

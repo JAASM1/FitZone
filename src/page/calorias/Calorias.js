@@ -40,6 +40,15 @@ function Calorias() {
         throw new Error('Error en la solicitud');
       }
 
+      // Almacena la palabra buscada en la base de datos
+      await fetch("http://localhost:8080/fitzone/guardarBusquedaCalorias", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ palabra: activity }),
+      });
+
       const data = await response.json();
       setCaloriesData(data); // Guarda los datos en el estado
     } catch (error) {
