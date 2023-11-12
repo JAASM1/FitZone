@@ -13,6 +13,7 @@ import IniciarSesion from './page/login/iniciosesion';
 import Registrarse from './page/login/registrarse';
 import ContraOlvidado from './page/login/olvidado';
 import Welcome from './components/Dashboard/welcome'
+import Estadisticas from './components/Dashboard/Estadisticas.js'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -24,6 +25,7 @@ const AppRoutes = () => {
     {path: '/Registrarse' , element: <Registrarse></Registrarse>},
     {path: '/Contraseña', element: <ContraOlvidado></ContraOlvidado>},
     {path: '/Bienvenida' , element: <Welcome></Welcome>},
+    {path: '/Estadisticas' , element: <Estadisticas/>},
   ])
   return routes
 }
