@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../Auth';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
-function Registrarse(){
+function Registrarse() {
 
     const navigate = useNavigate()
     const [user_name, setUserName] = useState("")
@@ -15,7 +15,7 @@ function Registrarse(){
 
     const handleRegister = async (e) => {
         e.preventDefault()
-        if (user_email.trim() === '' || user_password.trim() === '' || user_name.trim() === ''){
+        if (user_email.trim() === '' || user_password.trim() === '' || user_name.trim() === '') {
             setError("Por favor, ingresa todos los campos.")
             return;
         }
@@ -47,19 +47,25 @@ function Registrarse(){
                 const text = await response.text();
 
                 if (text) {
-                  const data = JSON.parse(text);
-                  setError(data.message);
+                    const data = JSON.parse(text);
+                    setError(data.message);
                 } else {
-                  setError("Error de registro. Por favor, inténtalo de nuevo.");
+                    setError("Error de registro. Por favor, inténtalo de nuevo.");
                 }
-              }
-            } catch (error) {
-                console.error(error);
-                setError("Error interno. Por favor, inténtalo de nuevo más tarde.");
             }
+        } catch (error) {
+            console.error(error);
+            setError("Error interno. Por favor, inténtalo de nuevo más tarde.");
         }
+    }
 
-    return(
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+
+    return (
         <div className='font-Montserrat'>
             <div className='bg-image1 h-screen bg-cover flex justify-center items-center'>
                 <div className="bg-[#272733]  relative overflow-hidden rounded-3xl w-[750px] h-[480px]">
@@ -67,31 +73,43 @@ function Registrarse(){
                         <form onSubmit={handleRegister} className="bg-[#272733]  flex justify-center items-center flex-col px-40 h-[100%] text-[#EFB810]" action=''>
                             <h1 className="font-bold text-2xl mb-5">Crea tu cuenta</h1>
                             <span className="font-serif text-sm mb-2 text-center text-white">o utilice su correo electrónico para registrarse</span>
-                            <input 
-                            type="text" 
-                            id="nombre" 
-                            placeholder="Nombre de usuario"
-                            value={user_name} 
-                            onChange={(e) => setUserName(e.target.value)}
-                            className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none my-5 mx-15 p-2 rounded-md font-mono"/>
-                            <input 
-                            type="email" 
-                            id="email"
-                            value={user_email}
-                            onChange={(e) => setEmail(e.target.value)} 
-                            placeholder="Correo" 
-                            className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"/>
-                            <input 
-                            type="password" 
-                            id="password" 
-                            placeholder="Contraseña" 
-                            value={user_password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none my-5 mx-15 p-2 rounded-md font-mono"/>
+                            <input
+                                type="text"
+                                id="nombre"
+                                placeholder="Nombre de usuario"
+                                value={user_name}
+                                onChange={(e) => setUserName(e.target.value)}
+                                className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none my-5 mx-15 p-2 rounded-md font-mono" />
+                            <input
+                                type="email"
+                                id="email"
+                                value={user_email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                placeholder="Correo"
+                                className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono" />
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                placeholder="Contraseña"
+                                value={user_password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none my-5 mx-15 p-2 rounded-md font-mono" />
+                            <span
+                                className=" absolute top-[20.2rem] left-[28rem] cursor-pointer"
+                                onClick={togglePasswordVisibility}
+                            >
+                                {showPassword ? (
+                                    <AiOutlineEyeInvisible className="h-[1rem] text-gray-400" />
+                                ) : (
+                                    <AiOutlineEye className="h-[1rem] text-gray-400" />
+                                )}
+                            </span>
                             {error && (
                                 <p className='text-red-500 text-sm mb-2'>{error}</p>
                             )}
-                            <button className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono" type='submit'>
+                            <button
+                                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono"
+                                type='submit'>
                                 Registrarse
                             </button>
                         </form>
@@ -102,10 +120,9 @@ function Registrarse(){
                                 <h1 className="font-bold text-2xl">¡Bienvenido GymBro!</h1>
                                 <p className="m-[40px] font-serif text-sm">Introduzca sus datos personales para utilizar todas las funciones del sitio web</p>
                                 <Link to='/Iniciar sesion'>
-                                    <button 
-                                    type='button'
-                                    onClick={handleRegister}
-                                    className=" bg-transparent border-[#272733] p-2 border-2 rounded-lg w-40 font-mono">
+                                    <button
+                                        type='button'
+                                        className=" bg-transparent border-[#272733] p-2 border-2 rounded-lg w-40 font-mono">
                                         Iniciar sesion
                                     </button>
                                 </Link>
