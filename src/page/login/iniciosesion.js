@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { gapi } from "gapi-script";
+import GoogleLogin from "react-google-login";
 
 import Swal from "sweetalert2";
 import { useAuth } from "../../Auth";
@@ -14,8 +16,6 @@ function IniciarSesion() {
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-
-
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -92,6 +92,25 @@ function IniciarSesion() {
     }
   };
 
+  const clientId = "315483207981-t4li45mjhc2va7mq4f84q7udak6mqk02.apps.googleusercontent.com";
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const start = () => {
+      gapi.auth2.init({
+        clientId: clientId,
+      })
+    }
+    gapi.load("client:auth2", start)
+  }, [])
+
+  const onSuccess = (response) => {
+    setUser(response.profileObj);
+  }
+  const onFailure = () => {
+    console.log("Something went wrong")
+  }
+
   return (
     <div className="font-Montserrat">
       <div className="bg-image h-screen bg-cover flex justify-center items-center">
@@ -143,6 +162,9 @@ function IniciarSesion() {
                 Acceder
               </button>
 
+              <div className="pt-5">
+                <GoogleLogin clientId={clientId} onSuccess={onSuccess} onFailure={onFailure} cookiePolicy="single_host_policy"/>
+              </div>
             </form>
           </div>
           <div className="absolute top-0 left-[50%] w-[50%] h-[100%] overflow-hidden rounded-bl-[100px] rounded-tl-[150px] z-96 transition-all ease-in-out font-Montserrat">
