@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { HiArrowLongLeft } from "react-icons/hi2";
-import { FiLoader } from "react-icons/fi";
+import { BiHome } from "react-icons/bi";
+import { HiArrowLongRight } from "react-icons/hi2";
+import { VscGraph } from "react-icons/vsc";
 
 function Sidebar() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   return (
     <>
       <div
@@ -13,45 +14,43 @@ function Sidebar() {
         } duration-300 relative`}
       >
         <div>
-          <HiArrowLongLeft
+          <HiArrowLongRight
             className={`bg-white text-black text-3xl rounded-full absolute -right-3 top-4 border
-                    border-black cursor-pointer ${!open && "rotate-180"}`}
+                    border-black cursor-pointer ${open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
           />
         </div>
-        <ul class="m-5">
-          <li
-            className="text-[#EFB810] flex items-center gap-x-4 p-2 hover:bg-light-white 
+        <ul class="m-5 flex flex-col gap-5">
+          <a href="/Bienvenida">
+            <li
+              className="text-[#EFB810] flex items-center gap-x-4 p-2 hover:bg-light-white 
                     rounded-md mt-2 cursor-pointer"
-          >
-            <span className="text-3xl block float-left">
-              <FiLoader />
-            </span>
-            <a href="/Bienvenida">
+            >
+              <span className="text-3xl block float-left">
+                <BiHome />
+              </span>
               <span
                 className={`text-base font-medium flex-1 ${!open && "hidden"}`}
               >
                 Bienvenido
               </span>
-            </a>
-          </li>
-        </ul>
-        <ul class="m-5">
-          <li
-            className="text-[#EFB810] flex items-center gap-x-4 p-2 hover:bg-light-white 
+            </li>
+          </a>
+          <a href="/Estadisticas">
+            <li
+              className="text-[#EFB810] flex items-center gap-x-4 p-2 hover:bg-light-white 
                     rounded-md mt-2 cursor-pointer"
-          >
-            <span className="text-3xl block float-left">
-              <FiLoader />
-            </span>
-            <a href="/Estadisticas">
+            >
+              <span className="text-3xl block float-left">
+                <VscGraph />
+              </span>
               <span
                 className={`text-base font-medium flex-1 ${!open && "hidden"}`}
               >
                 Estadisticas
               </span>
-            </a>
-          </li>
+            </li>
+          </a>
         </ul>
       </div>
     </>

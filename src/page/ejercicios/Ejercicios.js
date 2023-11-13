@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from 'axios'
 import bnnEjercicos from "../../asset/img/ejercicios/bnnEjercicio1.jpg";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
@@ -6,22 +7,11 @@ import Footer from "../../components/footer/footer";
 import { useAuth } from "../../Auth";
 import Swal from "sweetalert2";
 
-
 function Ejercicios() {
   const [count, setCount] = useState(""); // count recibe el valor del button
   const [data, setData] = useState(); //variables de extraccion de datos de la api
 
-  const { isLoggedIn } = useAuth()
-
-  //conexion con la api
-  // useEffect(() => {
-  //   fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${count}`, {
-  //     method: "GET",
-  //     headers: { "X-Api-Key": "wHcDfLI1fmto6kZltETAlw==P3Nn9u6EhOKG5MfL" },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setData(data));
-  // }, [count]);
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -36,9 +26,20 @@ function Ejercicios() {
     }
   }, [count, isLoggedIn]);
 
-  const handleButtonClick = (muscle) => {
+  const handleButtonClick = async (muscle) => {
     if (isLoggedIn) {
       setCount(muscle);
+
+      try {
+        await axios.post("http://localhost:8080/fitzone/valorBoton", {
+          buttonName: muscle,
+        });
+      } catch (error) {
+        console.error(
+          "Error al enviar la información del botón al backend:",
+          error
+        );
+      }
     } else {
       Swal.fire({
         icon: "error",
@@ -48,10 +49,10 @@ function Ejercicios() {
       });
     }
   };
- 
+
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="font-Montserrat bg-[#333333] text-white">
         <div className="flex items-center">
           <div className="flex flex-col absolute left-48">
@@ -81,7 +82,7 @@ function Ejercicios() {
                 className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
-                  handleButtonClick("adductors")
+                  handleButtonClick("adductors");
                 }}
               >
                 Adductor
