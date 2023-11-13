@@ -114,12 +114,12 @@ function IniciarSesion() {
   return (
     <div className="font-Montserrat">
       <div className="bg-image h-screen bg-cover flex justify-center items-center">
-        <div className="bg-[#272733] relative overflow-hidden rounded-3xl w-[750px] h-[480px]">
-          <div className="absolute top-0 h-[100%] transition-all ease-in-out left-0 w-[50%]">
+        <div className="bg-[#272733] relative overflow-hidden rounded-3xl w-[350px] lg:w-[750px] h-[480px]">
+          <div className="absolute top-0 h-[100%] transition-all ease-in-out left-0 w-[100%] lg:w-[50%]">
             <form
               onSubmit={handleLogin}
-              className="bg-[#272733] flex justify-center items-center flex-col px-10 h-[100%] text-[#EFB810]">
-              <h1 className="font-bold text-2xl mb-5">Iniciar sesion</h1>
+              className="bg-[#272733] flex justify-center items-center flex-col px-10 lg:h-[100%] text-[#EFB810]">
+              <h1 className="font-bold text-2xl mb-5 p-1">Iniciar sesion</h1>
               <span className="text-sm mb-2 text-white">con sus credenciales de usuario</span>
               <input
                 value={user_email}
@@ -137,7 +137,7 @@ function IniciarSesion() {
                 className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
               />
               <span
-                className=" absolute top-[17.5rem] left-[21.4rem] cursor-pointer"
+                className="absolute pt-9 left-[21.4rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
@@ -151,27 +151,27 @@ function IniciarSesion() {
                 <p className="text-red-500 text-[0.6rem] mt-2">{error}</p>
               )}  
 
-              {/* <Link to='/Contraseña'>
-                <p className="p-5">¿Ha olvidado su contraseña?</p>
-              </Link> */}
+              <Link to='/Contraseña'>
+                <p className="p-2">¿Ha olvidado su contraseña?</p>
+              </Link>
 
               <button
-                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono mt-8"
+                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono"
                 type='button'
                 onClick={handleLogin}>
                 Acceder
               </button>
 
-              <div className="pt-5">
+              <div className="pt-3">
                 <GoogleLogin clientId={clientId} onSuccess={onSuccess} onFailure={onFailure} cookiePolicy="single_host_policy"/>
               </div>
             </form>
           </div>
-          <div className="absolute top-0 left-[50%] w-[50%] h-[100%] overflow-hidden rounded-bl-[100px] rounded-tl-[150px] z-96 transition-all ease-in-out font-Montserrat">
+          <div className="absolute top-[75%] lg:top-0 lg:left-[50%] w-[100%] lg:w-[50%] h-[25%] lg:h-[100%] overflow-hidden lg:rounded-bl-[100px] lg:rounded-tl-[150px] z-96 transition-all ease-in-out font-Montserrat">
             <div className="bg-[#EFB810] relative h-[100%] w-[200%] transition-all ease-in-out text-[#272733]">
               <div className="absolute w-[50%] h-[100%] flex justify-center items-center flex-col text-center top-0 transition-all ease-in-out px-[30px]">
                 <h1 className="font-bold text-2xl">Hola, GymBro!</h1>
-                <p className="m-[40px] text-sm">Regístrese con sus datos personales para utilizar todas las funciones del sitio web</p>
+                <p className="lg:m-[40px] lg:text-sm max-lg:hidden">Regístrese con sus datos personales para utilizar todas las funciones del sitio web</p>
                 <Link to='/Registrarse'>
                   <button className=" bg-transparent border-[#272733] p-2 border-2 rounded-lg w-40 font-mono">
                     Registrate
