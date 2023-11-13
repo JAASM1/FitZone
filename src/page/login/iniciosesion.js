@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { gapi } from "gapi-script";
-import GoogleLogin from "react-google-login";
 
 import Swal from "sweetalert2";
 import { useAuth } from "../../Auth";
@@ -185,8 +183,7 @@ function IniciarSesion() {
               </Link>
 
               <button
-                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono"
-                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono mt-8 mb-3"
+                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono mb-3"
                 type='button'
                 onClick={handleLogin}>
                 Acceder
@@ -197,10 +194,6 @@ function IniciarSesion() {
                 onSuccess={handleGoogleResponse}
                 onError={handleGoogleResponse}
               />
-
-              <div className="pt-3">
-                <GoogleLogin clientId={clientId} onSuccess={onSuccess} onFailure={onFailure} cookiePolicy="single_host_policy"/>
-              </div>
             </form>
           </div>
           <div className="absolute top-[75%] lg:top-0 lg:left-[50%] w-[100%] lg:w-[50%] h-[25%] lg:h-[100%] overflow-hidden lg:rounded-bl-[100px] lg:rounded-tl-[150px] z-96 transition-all ease-in-out font-Montserrat">
