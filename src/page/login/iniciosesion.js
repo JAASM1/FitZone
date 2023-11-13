@@ -120,7 +120,7 @@ function IniciarSesion() {
               onSubmit={handleLogin}
               className="bg-[#272733] flex justify-center items-center flex-col px-10 h-[100%] text-[#EFB810]">
               <h1 className="font-bold text-2xl mb-5">Iniciar sesion</h1>
-              <span className="font-serif text-sm mb-2 text-white">con sus credenciales de usuario</span>
+              <span className="text-sm mb-2 text-white">con sus credenciales de usuario</span>
               <input
                 value={user_email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -137,7 +137,7 @@ function IniciarSesion() {
                 className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
               />
               <span
-                className=" absolute top-[16.5rem] left-[21.4rem] cursor-pointer"
+                className=" absolute top-[17.5rem] left-[21.4rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
@@ -151,12 +151,12 @@ function IniciarSesion() {
                 <p className="text-red-500 text-[0.6rem] mt-2">{error}</p>
               )}  
 
-              <Link to='/Contraseña'>
-                <p className="p-5 font-serif">¿Ha olvidado su contraseña?</p>
-              </Link>
+              {/* <Link to='/Contraseña'>
+                <p className="p-5">¿Ha olvidado su contraseña?</p>
+              </Link> */}
 
               <button
-                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono"
+                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono mt-8"
                 type='button'
                 onClick={handleLogin}>
                 Acceder

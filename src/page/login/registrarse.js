@@ -72,7 +72,7 @@ function Registrarse() {
                     <div className="absolute top-0 h-[100%] transition-all ease-in-out left-64 w-[80%]">
                         <form onSubmit={handleRegister} className="bg-[#272733]  flex justify-center items-center flex-col px-40 h-[100%] text-[#EFB810]" action=''>
                             <h1 className="font-bold text-2xl mb-5">Crea tu cuenta</h1>
-                            <span className="font-serif text-sm mb-2 text-center text-white">o utilice su correo electrónico para registrarse</span>
+                            <span className="text-sm mb-2 text-center text-white">o utilice su correo electrónico para registrarse</span>
                             <input
                                 type="text"
                                 id="nombre"
@@ -118,7 +118,7 @@ function Registrarse() {
                         <div className="bg-[#EFB810] relative h-[100%] w-[200%] transition-all ease-in-out text-[#272733]">
                             <div className="absolute w-[50%] h-[100%] flex justify-center items-center flex-col text-center top-0 transition-all ease-in-out px-[30px]">
                                 <h1 className="font-bold text-2xl">¡Bienvenido GymBro!</h1>
-                                <p className="m-[40px] font-serif text-sm">Introduzca sus datos personales para utilizar todas las funciones del sitio web</p>
+                                <p className="m-[40px] font-semibold text-sm">Introduzca sus datos personales para utilizar todas las funciones del sitio web</p>
                                 <Link to='/Iniciar sesion'>
                                     <button
                                         type='button'
