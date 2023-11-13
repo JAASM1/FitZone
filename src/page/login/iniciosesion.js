@@ -101,7 +101,7 @@ function IniciarSesion() {
               onSubmit={handleLogin}
               className="bg-[#272733] flex justify-center items-center flex-col px-10 h-[100%] text-[#EFB810]">
               <h1 className="font-bold text-2xl mb-5">Iniciar sesion</h1>
-              <span className="font-serif text-sm mb-2 text-white">con sus credenciales de usuario</span>
+              <span className="text-sm mb-2 text-white">con sus credenciales de usuario</span>
               <input
                 value={user_email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -133,7 +133,7 @@ function IniciarSesion() {
               )}  
 
               <Link to='/Contraseña'>
-                <p className="p-5 font-serif">¿Ha olvidado su contraseña?</p>
+                <p className="p-5">¿Ha olvidado su contraseña?</p>
               </Link>
 
               <button
