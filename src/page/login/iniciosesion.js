@@ -8,6 +8,7 @@ import { useAuth } from "../../Auth";
 import { jwtDecode } from "jwt-decode";
 
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { GoogleLoginButton } from "./logingoogle";
 
 function IniciarSesion() {
   const navigate = useNavigate()
@@ -16,6 +17,51 @@ function IniciarSesion() {
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleGoogleResponse = async (response) => {
+    if (response.error) {
+      console.error("Google Sign-In Error:", response.error);
+    } else {
+      const googleToken = response.credential;
+      console.log("Google Token:", googleToken);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ googleToken }),
+      };
+      console.log("Request options:", requestOptions);
+      try {
+        const res = await fetch(
+          "http://localhost:8080/fitzone/users/loginwithgoogle",
+          requestOptions
+        );
+        if (res.ok) {
+          const data = await res.json();
+          const token = data.token;
+          localStorage.setItem("token", token);
+          console.log("Inicio de Sesión exitoso");
+          login();
+          Swal.fire({
+            title: "Inicio de Sesión exitoso",
+            html: "Redireccionando",
+            icon: "success",
+            timer: 1000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            onBeforeOpen: () => {
+              Swal.showLoading();
+            },
+          }).then(() => {
+            navigate("/");
+          });
+        } else {
+          console.error("Server error:", res.statusText);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -92,24 +138,7 @@ function IniciarSesion() {
     }
   };
 
-  const clientId = "315483207981-t4li45mjhc2va7mq4f84q7udak6mqk02.apps.googleusercontent.com";
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    const start = () => {
-      gapi.auth2.init({
-        clientId: clientId,
-      })
-    }
-    gapi.load("client:auth2", start)
-  }, [])
-
-  const onSuccess = (response) => {
-    setUser(response.profileObj);
-  }
-  const onFailure = () => {
-    console.log("Something went wrong")
-  }
+  
 
   return (
     <div className="font-Montserrat">
@@ -137,7 +166,7 @@ function IniciarSesion() {
                 className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
               />
               <span
-                className="absolute pt-9 left-[21.4rem] cursor-pointer"
+                className=" absolute top-[15.8rem] left-[21.4rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
@@ -157,10 +186,17 @@ function IniciarSesion() {
 
               <button
                 className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono"
+                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono mt-8 mb-3"
                 type='button'
                 onClick={handleLogin}>
                 Acceder
               </button>
+ 
+              <GoogleLoginButton
+                clientId={"48190451362-g56p8ihvpbnkf4e5ujj0brh133p9elsh.apps.googleusercontent.com"}
+                onSuccess={handleGoogleResponse}
+                onError={handleGoogleResponse}
+              />
 
               <div className="pt-3">
                 <GoogleLogin clientId={clientId} onSuccess={onSuccess} onFailure={onFailure} cookiePolicy="single_host_policy"/>
