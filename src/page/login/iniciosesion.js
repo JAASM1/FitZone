@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { GoogleLoginButton } from "./logingoogle";
+import { decode } from "punycode";
 
 function IniciarSesion() {
   const navigate = useNavigate()
@@ -96,6 +97,7 @@ function IniciarSesion() {
 
 
         const decodedToken = jwtDecode(token);
+        console.log(decodedToken.user_email)
 
         // verifica si es admin
         if (decodedToken && decodedToken.user_type === 2) {
