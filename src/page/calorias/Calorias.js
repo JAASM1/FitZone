@@ -96,6 +96,7 @@ function Calorias() {
           placeholder="Busca una actividad para saber cuantas calorias vas a quemar"
           value={activity}
           onChange={handleInputChange}
+          // palabras de la api: run, skiing, golf, walk, soccer, basketball, cycling, jump, karate, boxing
         />
         <button onClick={handleSearch}>
           <div className="ml-5 text-2xl">
@@ -105,8 +106,9 @@ function Calorias() {
       </div>
       <div className="bg-black h-screen flex justify-center items-center">
         {!loading && !caloriesData &&(
-          <div className="text-white text-5xl text-center">
-            <p>No se encontraron resultados</p>
+          <div className="text-white text-center">
+            <p className="text-5xl">No se encontraron resultados</p>
+            <p className="text-xl">Prueba buscando términos como "run", "skiing" o "cycling"</p>
           </div>
         )}
         {loading && (
@@ -115,7 +117,7 @@ function Calorias() {
           </div>
         )}
         {!loading && caloriesData && (
-          <div className="grid md:grid-cols-3 md:overflow-x-autos md:gap-7">
+          <div className={`grid md:grid-cols-${Math.min(caloriesData.length, 3)} md:overflow-x-autos md:gap-7 place-content-center`}>
             {caloriesData.map((item, index) => (
               <div key={index} className="bg-[#333] rounded-2xl font-bold w-[400px] h-[200px]">
                 <div className="relative overflow-hidden flex flex-col justify-center items-center mt-[15%]">
