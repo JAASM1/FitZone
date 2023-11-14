@@ -21,6 +21,15 @@ function Registrarse() {
         }
 
         try {
+            Swal.fire({
+                title: "Cargando...",
+                text: "Por favor, espera un momento.",
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                willOpen: () => {
+                  Swal.showLoading();
+                },
+              });
             const response = await fetch(
                 "http://localhost:8080/fitzone/users/",
                 {
@@ -33,6 +42,7 @@ function Registrarse() {
             );
 
             if (response.ok) {
+                Swal.close()
                 Swal.fire({
                     title: "Registro Exitoso",
                     html: "Redirigiendo a inicio de sesión",

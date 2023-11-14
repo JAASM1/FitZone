@@ -165,15 +165,15 @@ function Nutricion() {
               placeholder="Busca un alimento aquí"
               value={nutrition}
               onChange={handleInputChange}
-              className="text-white font-semibold tracking-widest text-[0.8rem] w-[16rem] h-[2.9rem] bg-amber-400 outline-none rounded-3xl pl-4 pr-10"
+              className="text-white placeholder-white  font-semibold tracking-widest text-[0.8rem] w-[16rem] h-[2.9rem] bg-amber-400 outline-none rounded-3xl pl-4 pr-10"
             />
             <button
               onClick={getNutrition}
-              className="1cursor-pointer absolute right-0 top-[-7%] left-[85%] bottom-0 mt-4 mr-4 bg-zinc-800 z-10 w-[2.9rem] h-[3.1rem] rounded-full"
+              className="cursor-pointer absolute right-0 top-[-7%] left-[85%] bottom-0 mt-4 mr-4 bg-zinc-800 z-10 w-[2.9rem] h-[3.1rem] rounded-full"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="ml-3 md:ml-[4.5]"
+                className=" ml-[0.8rem] md:ml-[4.5]"
                 class="icon icon-tabler icon-tabler-search"
                 width="24"
                 height="24"
@@ -193,7 +193,7 @@ function Nutricion() {
         </div>
 
         {/* Mapeado de resultados y manejo de errores */}
-        {error && <p className="text-red-500">{error}</p>}
+
         {nutritionData && nutritionData.length > 0 ? (
           <div className="w-[19rem] md:w-[31rem] md:h-[14rem] h-[15rem] bg-zinc-700 rounded-xl absolute top-[40%] left-[12%] md:left-[34%]">
             {nutritionData.map((item, index) => (
@@ -201,7 +201,7 @@ function Nutricion() {
                 key={index}
                 className="w-[15rem] h-[10rem] md:ml-[8rem] ml-[2rem]"
               >
-                <p className="text-white text-[1.4rem] md:text-[2rem] font-[700] uppercase mt-5 ml-[5.5rem] md:ml-[5rem]">
+                <p className="text-white flex justify-center w-[5rem] text-[1.4rem] md:text-[2rem] font-[700] uppercase mt-5 ml-[5.5rem] md:ml-[5rem]">
                   {item.name}
                 </p>
                 <div className="w-[15rem] h-[2rem] flex justify-between mt-2">
@@ -225,7 +225,10 @@ function Nutricion() {
               </div>
             ))}
           </div>
-        ) : null}
+        ) : ( <div className="w-full h-full flex flex-col"> 
+            <h2 className="text-white mt-[15rem] font-semibold text-xl mx-auto">No hay ningún resultado...</h2> 
+            {error && <p className="text-red-500 mx-auto">{error}</p>}
+          </div>)}
       </div>
       <Footer />
     </div>

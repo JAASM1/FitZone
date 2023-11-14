@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { GoogleLoginButton } from "./logingoogle";
 
+
 function IniciarSesion() {
   const navigate = useNavigate()
   const { login, loginAdmin } = useAuth();
@@ -15,6 +16,7 @@ function IniciarSesion() {
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleGoogleResponse = async (response) => {
     if (response.error) {
@@ -28,6 +30,7 @@ function IniciarSesion() {
         body: JSON.stringify({ googleToken }),
       };
       console.log("Request options:", requestOptions);
+      setLoading(true)
       try {
         const res = await fetch(
           "http://localhost:8080/fitzone/users/loginwithgoogle",
@@ -51,6 +54,7 @@ function IniciarSesion() {
             },
           }).then(() => {
             navigate("/");
+            setLoading(false);
           });
         } else {
           console.error("Server error:", res.statusText);
@@ -76,6 +80,16 @@ function IniciarSesion() {
       return;
     }
     try {
+      Swal.fire({
+        title: "Cargando...",
+        text: "Por favor, espera un momento.",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      });
+
       const response = await fetch(
         "http://localhost:8080/fitzone/users/login",
         {
@@ -103,7 +117,7 @@ function IniciarSesion() {
           navigate("/Bienvenida");
           return;
         }
-
+        Swal.close()
         login();
         Swal.fire({
           title: "Inicio de Sesión exitoso",
@@ -133,6 +147,8 @@ function IniciarSesion() {
     } catch (error) {
       console.error(error);
       setError("Error interno. Por favor, inténtalo de nuevo más tarde.");
+    } finally {
+      setLoading(false)
     }
   };
 
