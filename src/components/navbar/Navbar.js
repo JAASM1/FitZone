@@ -6,7 +6,8 @@ import { AiOutlineLogout } from 'react-icons/ai'
 import Swal from 'sweetalert2'
 
 function Navbar() {
- const { isLoggedIn, logout } = useAuth()
+ const { isLoggedIn, logout, isAdmin } = useAuth()
+
 
  const handleLogout = () => {
     Swal.fire({
@@ -31,7 +32,7 @@ function Navbar() {
 
   return (
     <div className='w-full m-0 p-0 font-Montserrat'>
-        <div className='bg-black flex'>
+        <div className='bg-black flex items-center'>
             <Link to = '/'>
                 <h1 className='text-white text-4xl p-6 pl-10 font-medium max-md:text-center'>FIT ZONE</h1>
             </Link>
@@ -43,6 +44,11 @@ function Navbar() {
             )
                 : (
                 <Link to="/Iniciar sesion" className=' text-amber-300 uppercase tracking-wider text-sm my-auto md:ml-[68rem]'>Inicia sesión</Link>
+            )}
+            {isAdmin && (
+                <Link to="/Estadisticas">
+                    <h2 className='text-white md:ml-[68rem]'>Dashboard</h2>
+                </Link>
             )}
         </div>
 
