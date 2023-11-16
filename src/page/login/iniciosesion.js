@@ -11,7 +11,7 @@ import { GoogleLoginButton } from "./logingoogle";
 
 function IniciarSesion() {
   const navigate = useNavigate()
-  const { login, loginAdmin } = useAuth();
+  const { login, loginAdmin, isAdmin } = useAuth();
   const [user_email, setEmail] = useState("");
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -113,8 +113,10 @@ function IniciarSesion() {
 
         // verifica si es admin
         if (decodedToken && decodedToken.user_type === 2) {
+          Swal.close()
           loginAdmin();
-          navigate("/Bienvenida");
+          console.log(isAdmin)
+          navigate("/Estadisticas");
           return;
         }
         Swal.close()
@@ -133,9 +135,11 @@ function IniciarSesion() {
           navigate("/");
         });
       } else if (response.status === 401) {
+        Swal.close()
         setError("Credenciales inválidas. Verifica tu email y contraseña.");
         console.log(error);
       } else {
+        Swal.close()
         const text = await response.text();
         if (text) {
           const data = JSON.parse(text);
@@ -145,6 +149,7 @@ function IniciarSesion() {
         }
       }
     } catch (error) {
+      Swal.close()
       console.error(error);
       setError("Error interno. Por favor, inténtalo de nuevo más tarde.");
     } finally {
