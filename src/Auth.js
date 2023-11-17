@@ -15,6 +15,7 @@ export function AuthProvider({ children }) {
 
     const loginAdmin = () => {
         setIsAdmin(true)
+        navigate('/Bienvenida')
     }
 
     const logoutAdmin = () => {

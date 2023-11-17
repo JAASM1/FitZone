@@ -78,9 +78,9 @@ function Registrarse() {
     return (
         <div className='font-Montserrat'>
             <div className='bg-image1 h-screen bg-cover flex justify-center items-center'>
-                <div className="bg-[#272733]  relative overflow-hidden rounded-3xl w-[750px] h-[480px]">
-                    <div className="absolute top-0 h-[100%] transition-all ease-in-out left-64 w-[80%]">
-                        <form onSubmit={handleRegister} className="bg-[#272733]  flex justify-center items-center flex-col px-40 h-[100%] text-[#EFB810]" action=''>
+                <div className="bg-[#272733] relative overflow-hidden rounded-3xl w-[350px] lg:w-[750px] h-[480px]">
+                    <div className="absolute top-0 h-[100%] transition-all ease-in-out w-[150%] lg:left-64 lg:w-[80%]">
+                        <form onSubmit={handleRegister} className="bg-[#272733] flex justify-center items-center flex-col px-16 w-[68%] lg:w-[100%] lg:px-40 lg:h-[100%] text-[#EFB810]" action=''>
                             <h1 className="font-bold text-2xl mb-5">Crea tu cuenta</h1>
                             <span className="text-sm mb-2 text-center text-white">o utilice su correo electrónico para registrarse</span>
                             <input
@@ -124,11 +124,11 @@ function Registrarse() {
                             </button>
                         </form>
                     </div>
-                    <div className="absolute top-0 right-[50%] w-[50%] h-[100%] overflow-hidden rounded-br-[100px] rounded-tr-[150px] z-96 transition-all ease-in-out">
+                    <div className="absolute top-[75%] lg:top-0 lg:right-[50%] w-[100%] lg:w-[50%] h-[25%] lg:h-[100%] overflow-hidden lg:rounded-br-[100px] lg:rounded-tr-[150px] z-96 transition-all ease-in-out">
                         <div className="bg-[#EFB810] relative h-[100%] w-[200%] transition-all ease-in-out text-[#272733]">
                             <div className="absolute w-[50%] h-[100%] flex justify-center items-center flex-col text-center top-0 transition-all ease-in-out px-[30px]">
                                 <h1 className="font-bold text-2xl">¡Bienvenido GymBro!</h1>
-                                <p className="m-[40px] font-semibold text-sm">Introduzca sus datos personales para utilizar todas las funciones del sitio web</p>
+                                <p className="lg:m-[40px] lg:font-semibold lg:text-sm max-lg:hidden">Introduzca sus datos personales para utilizar todas las funciones del sitio web</p>
                                 <Link to='/Iniciar sesion'>
                                     <button
                                         type='button'
