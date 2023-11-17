@@ -7,7 +7,7 @@ const AuthContext = createContext()
 export function AuthProvider({ children }) {
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
-    const [isAdmin, setIsAdmin] = useState(!!localStorage.getItem("token"));
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const login = () => {
       setIsLoggedIn(true);
