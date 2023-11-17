@@ -109,12 +109,10 @@ function IniciarSesion() {
         localStorage.setItem("token", token);
         console.log("Inicio de Sesión exitoso");
 
-
         const decodedToken = jwtDecode(token);
-        console.log(decodedToken.user_email)
-
+        console.log(decodedToken.user_type)
         // verifica si es admin
-        if (decodedToken && decodedToken.user_type === 2) {
+        if (decodedToken && decodedToken.user_type === 1) {
           Swal.close()
           loginAdmin();
           console.log(isAdmin)
