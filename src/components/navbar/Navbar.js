@@ -8,7 +8,6 @@ import Swal from 'sweetalert2'
 function Navbar() {
  const { isLoggedIn, logout, isAdmin } = useAuth()
 
-
  const handleLogout = () => {
     Swal.fire({
         title: "¿Quieres terminar tu sesión?",
@@ -45,10 +44,12 @@ function Navbar() {
                 : (
                 <Link to="/Iniciar sesion" className=' text-amber-300 uppercase tracking-wider text-sm my-auto md:ml-[68rem]'>Inicia sesión</Link>
             )}
-            {isAdmin && (
+            {isAdmin ? (
                 <Link to="/Estadisticas">
                     <h2 className='text-white md:ml-[68rem]'>Dashboard</h2>
                 </Link>
+            ) : (
+                ""
             )}
         </div>
 
