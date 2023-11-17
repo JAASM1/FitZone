@@ -45,17 +45,8 @@ function Calorias() {
         throw new Error("Error en la solicitud");
       }
 
-      // Almacena la palabra buscada en la base de datos
-      await fetch("http://localhost:8080/fitzone/guardarBusquedaCalorias", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ palabra: activity }),
-      });
-
       const data = await response.json();
-      if(data.length === 0) {
+      if (data.length === 0) {
         Swal.fire({
           icon: "info",
           title: "Información",
@@ -63,6 +54,14 @@ function Calorias() {
         });
       } else {
         setCaloriesData(data); // Guarda los datos en el estado
+        // Almacena la palabra buscada en la base de datos
+        await fetch("http://localhost:8080/fitzone/guardarBusquedaCalorias", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ palabra: activity }),
+        });
       }
     } catch (error) {
       console.error("Error:", error);
@@ -105,10 +104,12 @@ function Calorias() {
         </button>
       </div>
       <div className="bg-black h-screen flex justify-center items-center">
-        {!loading && !caloriesData &&(
+        {!loading && !caloriesData && (
           <div className="text-white text-center">
             <p className="text-5xl">No se encontraron resultados</p>
-            <p className="text-xl">Prueba buscando términos como "run", "skiing" o "cycling"</p>
+            <p className="text-xl">
+              Prueba buscando términos como "run", "skiing" o "cycling"
+            </p>
           </div>
         )}
         {loading && (
@@ -117,13 +118,25 @@ function Calorias() {
           </div>
         )}
         {!loading && caloriesData && (
-          <div className={`grid md:grid-cols-${Math.min(caloriesData.length, 3)} md:overflow-x-autos md:gap-7 place-content-center`}>
+          <div
+            className={`grid md:grid-cols-${Math.min(
+              caloriesData.length,
+              3
+            )} md:overflow-x-autos md:gap-7 place-content-center`}
+          >
             {caloriesData.map((item, index) => (
-              <div key={index} className="bg-[#333] rounded-2xl font-bold w-[400px] h-[200px]">
+              <div
+                key={index}
+                className="bg-[#333] rounded-2xl font-bold w-[400px] h-[200px]"
+              >
                 <div className="relative overflow-hidden flex flex-col justify-center items-center mt-[15%]">
                   <h3 className="text-[#EFB810] text-lg">{item.name}</h3>
-                  <p className="text-white">Calorías por hora: {item.calories_per_hour}</p>
-                  <p className="text-white">Duración en minutos: {item.duration_minutes}</p>
+                  <p className="text-white">
+                    Calorías por hora: {item.calories_per_hour}
+                  </p>
+                  <p className="text-white">
+                    Duración en minutos: {item.duration_minutes}
+                  </p>
                 </div>
               </div>
             ))}

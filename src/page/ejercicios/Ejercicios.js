@@ -76,10 +76,10 @@ function Ejercicios() {
           </div>
 
           {/* ////////////////////////////////////Buttons/////////////////////////////////////// */}
-          <div className="flex flex-col items-center gap-4">
-            <div className="flex gap-3">
+          <div className="flex flex-col items-center gap-6">
+            <div className="flex gap-5">
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("adductors");
@@ -88,7 +88,7 @@ function Ejercicios() {
                 Adductor
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("abductors");
@@ -97,7 +97,7 @@ function Ejercicios() {
                 Abductors
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("abdominals");
@@ -106,7 +106,7 @@ function Ejercicios() {
                 Abdominals
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("biceps");
@@ -115,7 +115,7 @@ function Ejercicios() {
                 Biceps
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("chest");
@@ -124,7 +124,7 @@ function Ejercicios() {
                 Chest
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("calves");
@@ -133,9 +133,9 @@ function Ejercicios() {
                 Calves
               </button>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-5">
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("forearms");
@@ -144,7 +144,7 @@ function Ejercicios() {
                 Forearms
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("glutes");
@@ -153,7 +153,7 @@ function Ejercicios() {
                 Glutes
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("hamstrings");
@@ -162,7 +162,7 @@ function Ejercicios() {
                 Hamstrings
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("lower_back");
@@ -171,7 +171,7 @@ function Ejercicios() {
                 Lower back
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("lats");
@@ -180,7 +180,7 @@ function Ejercicios() {
                 Lats
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("middle_back");
@@ -189,9 +189,9 @@ function Ejercicios() {
                 Middle back
               </button>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-5">
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("neck");
@@ -200,7 +200,7 @@ function Ejercicios() {
                 Neck
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("triceps");
@@ -209,7 +209,7 @@ function Ejercicios() {
                 Triceps
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("traps");
@@ -218,7 +218,7 @@ function Ejercicios() {
                 Traps
               </button>
               <button
-                className="btnStyles bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("quadriceps");
@@ -232,7 +232,7 @@ function Ejercicios() {
                 {data?.map((exercise) => (
                   <li
                     key={exercise.id}
-                    className="bg-white text-black p-10 rounded-xl"
+                    className="bg-zinc-600 text-white capitalize p-10 rounded-xl text-justify transition-all"
                   >
                     <div>
                       <h3 className="text-[#EFB810] font-semibold text-4xl">
@@ -241,7 +241,7 @@ function Ejercicios() {
                       <p className="text-xl">{exercise.muscle}</p>
                       <p className="text-xl">{exercise.equipment}</p>
                       <p className="text-xl">{exercise.difficulty}</p>
-                      <p className="text-sm">{exercise.instructions}</p>
+                      <p className="text-sm normal-case">{exercise.instructions}</p>
                     </div>
                   </li>
                 ))}
