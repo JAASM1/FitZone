@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import banner from "../../asset/img/nutricion/nutricion-banner.jpg";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
@@ -48,15 +49,6 @@ function Nutricion() {
         throw new Error("Error en la solicitud");
       }
 
-      // Almacena la palabra buscada en la base de datos
-      await fetch("http://localhost:8080/fitzone/guardarBusquedaNutricion", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ palabra: nutrition }),
-      });
-
       const data = await result.json();
       if (data.length === 0) {
         setError(
@@ -64,6 +56,14 @@ function Nutricion() {
         );
       } else {
         setNutritionData(data);
+        // Almacena la palabra buscada en la base de datos
+        await fetch("http://localhost:8080/fitzone/guardarBusquedaNutricion", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ palabra: nutrition }),
+        });
       }
     } catch (error) {
       console.error("Error:", error);
@@ -197,38 +197,42 @@ function Nutricion() {
         {nutritionData && nutritionData.length > 0 ? (
           <div className="w-[19rem] md:w-[31rem] md:h-[14rem] h-[15rem] bg-zinc-700 rounded-xl absolute top-[40%] left-[12%] md:left-[34%]">
             {nutritionData.map((item, index) => (
-              <div
-                key={index}
-                className="w-[15rem] h-[10rem] md:ml-[8rem] ml-[2rem]"
-              >
-                <p className="text-white flex justify-center w-[5rem] text-[1.4rem] md:text-[2rem] font-[700] uppercase mt-5 ml-[5.5rem] md:ml-[5rem]">
-                  {item.name}
-                </p>
-                <div className="w-[15rem] h-[2rem] flex justify-between mt-2">
-                  <p className="text-white">Calorías</p>
-                  <p className="text-amber-400">{item.calories} g</p>
-                </div>
-                <div className="w-[15rem] h-[2rem] flex justify-between">
-                  <p className="text-white">Grasas totales</p>
-                  <p className="text-amber-400">{item.fat_total_g} g</p>
-                </div>
-                <div className="w-[15rem] h-[2rem] flex justify-between">
-                  <p className="text-white">Proteína</p>
-                  <p className="text-amber-400">{item.protein_g} g</p>
-                </div>
-                <div className="w-[15rem] h-[2rem] flex justify-between">
-                  <p className="text-white">Carbohidratos</p>
-                  <p className="text-amber-400">
-                    {item.carbohydrates_total_g} g
+                <div
+                  key={index}
+                  className="w-[15rem] h-[10rem] md:ml-[8rem] ml-[2rem]"
+                >
+                  <p className="text-white flex justify-center w-[5rem] text-[1.4rem] md:text-[2rem] font-[700] uppercase mt-5 ml-[5.5rem] md:ml-[5rem]">
+                    {item.name}
                   </p>
+                  <div className="w-[15rem] h-[2rem] flex justify-between mt-2">
+                    <p className="text-white">Calorías</p>
+                    <p className="text-amber-400">{item.calories} g</p>
+                  </div>
+                  <div className="w-[15rem] h-[2rem] flex justify-between">
+                    <p className="text-white">Grasas totales</p>
+                    <p className="text-amber-400">{item.fat_total_g} g</p>
+                  </div>
+                  <div className="w-[15rem] h-[2rem] flex justify-between">
+                    <p className="text-white">Proteína</p>
+                    <p className="text-amber-400">{item.protein_g} g</p>
+                  </div>
+                  <div className="w-[15rem] h-[2rem] flex justify-between">
+                    <p className="text-white">Carbohidratos</p>
+                    <p className="text-amber-400">
+                      {item.carbohydrates_total_g} g
+                    </p>
+                  </div>
                 </div>
-              </div>
             ))}
           </div>
-        ) : ( <div className="w-full h-full flex flex-col"> 
-            <h2 className="text-white mt-[15rem] font-semibold text-xl mx-auto">No hay ningún resultado...</h2> 
+        ) : (
+          <div className="w-full h-full flex flex-col">
+            <h2 className="text-white mt-[15rem] font-semibold text-xl mx-auto">
+              No hay ningún resultado...
+            </h2>
             {error && <p className="text-red-500 mx-auto">{error}</p>}
-          </div>)}
+          </div>
+        )}
       </div>
       <Footer />
     </div>

@@ -24,7 +24,6 @@ const AppRoutes = () => {
     {path: '/Iniciar sesion', element: <IniciarSesion></IniciarSesion>},
     {path: '/Registrarse' , element: <Registrarse></Registrarse>},
     {path: '/Contraseña', element: <ContraOlvidado></ContraOlvidado>},
-    {path: '/Bienvenida' , element: <Welcome></Welcome>},
     {path: '/Estadisticas' , element: <Estadisticas/>},
   ])
   return routes
