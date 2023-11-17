@@ -21,7 +21,7 @@ function EstadisticaCalorias() {
   return (
     <div className="flex flex-col items-center gap-5">
       <h3 className="text-4xl font-semibold">Calorias</h3>
-      <div className="border shadow-lg rounded-xl flex justify-center items-center w-[275px] h-[200px] bg-zinc-800 text-white">
+      <div className="border shadow-lg rounded-xl flex justify-center items-center w-[275px] h-[200px] bg-white">
         <ul className="list-decimal capitalize space-y-3">
           {topPalabras.map((palabra, index) => (
             <li
@@ -29,7 +29,7 @@ function EstadisticaCalorias() {
               className={
                 index === 0
                   ? "text-2xl text-[#EFB810] font-semibold"
-                  : "text-xl text-white"
+                  : "text-xl"
               }
             >
               {palabra}

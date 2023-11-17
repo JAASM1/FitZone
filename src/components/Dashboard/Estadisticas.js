@@ -5,7 +5,7 @@ import EstadisticaEjercicios from './EstadisticaComponente/EstadisticaEjercicios
 
 function Estadisticas() {
   return (
-    <div className="flex font-Montserrat">
+    <div className="flex font-Montserrat bg-zinc-800">
       <Sidebar />
       <div className="w-[full] min-h-min relative m-10 ml-[15rem] flex flex-col items-center">
         <h1 className="text-5xl font-bold text-[#EFB810] mb-40">
