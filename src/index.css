@@ -27,4 +27,7 @@
         --tw-shadow-color: #000;
         --tw-shadow: var(--tw-shadow-colored);
     }
+    /* .textSize {
+        font-size: clamp(30px,8vw,100px);
+    } */
 }
