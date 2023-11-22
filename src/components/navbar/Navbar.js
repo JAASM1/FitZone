@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../Auth'
-import { AiOutlineLogout } from 'react-icons/ai'
+import { IoLogOutOutline } from 'react-icons/io5'
 import Swal from 'sweetalert2'
 
 function Navbar() {
@@ -38,7 +38,7 @@ function Navbar() {
             {isLoggedIn ? (
                 <button
                 onClick={handleLogout}>
-                    <AiOutlineLogout className='text-white'></AiOutlineLogout>
+                    <IoLogOutOutline className='text-white text-3xl hover:text-[#EFB810] md:relative md:left-[76rem]'></IoLogOutOutline>
                 </button>
             )
                 : (
