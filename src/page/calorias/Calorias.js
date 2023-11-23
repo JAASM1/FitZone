@@ -25,6 +25,26 @@ function Calorias() {
       });
       return;
     }
+
+    if (activity.trim() === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "Advertencia",
+        text: "Por favor, ingresa una actividad antes de realizar la búsqueda.",
+      });
+      return;
+    }
+
+    const specialCharactersRegex = /[^a-zA-Z\s]/;
+    if (specialCharactersRegex.test(activity)) {
+      Swal.fire({
+        icon: "warning",
+        title: "Advertencia",
+        text: "No se permiten caracteres especiales, ni números en la búsqueda",
+      });
+      return;
+    }
+
     setLoading(true);
 
     const apiKey = "WtsnxJSNki7OXcUF1wGyKA==1ElJCbq4rHRH0vur";
@@ -94,6 +114,7 @@ function Calorias() {
           type="text"
           placeholder="Busca una actividad para saber cuantas calorias vas a quemar"
           value={activity}
+          required
           onChange={handleInputChange}
           // palabras de la api: run, skiing, golf, walk, soccer, basketball, cycling, jump, karate, boxing
         />
@@ -103,12 +124,12 @@ function Calorias() {
           </div>
         </button>
       </div>
-      <div className="bg-black h-screen flex justify-center items-center">
+      <div className={`flex justify-center items-center ${(!loading && !caloriesData) ? 'h-auto bg-black p-10' : 'h-auto bg-black p-10'}`}>
         {!loading && !caloriesData && (
           <div className="text-white text-center">
             <p className="text-5xl">No se encontraron resultados</p>
             <p className="text-xl">
-              Prueba buscando términos como "run", "skiing" o "cycling"
+              Prueba buscando términos como "run", "skiing" o "golf"
             </p>
           </div>
         )}
