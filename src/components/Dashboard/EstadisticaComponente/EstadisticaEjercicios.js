@@ -21,17 +21,17 @@ function EstadisticaEjercicios() {
     obtenerTopButtons();
   }, []);
   return (
-    <div className="flex flex-col items-center gap-5">
-      <h3 className="text-4xl font-semibold text-white">Ejercicios</h3>
-      <div className="border shadow-lg rounded-xl flex justify-center items-center w-[275px] h-[200px] bg-white">
+    <div className="flex flex-col items-center md:gap-5 gap-3">
+      <h3 className="md:text-4xl text-3xl font-semibold text-white">Ejercicios</h3>
+      <div className="border shadow-lg rounded-xl flex justify-center items-center md:w-[275px] md:h-[200px] w-[225px] h-[150px] bg-white">
         <ul className="capitalize space-y-3 text-center">
           {topButtons.map((boton, index) => (
             <li
               key={index}
               className={
                 index === 0
-                  ? `text-3xl text-[#EFB810] font-bold flex gap-2 items-center`
-                  : "text-xl font-semibold"
+                  ? `md:text-3xl text-2xl text-[#EFB810] font-bold flex gap-2 items-center`
+                  : "text-lg md:text-xl font-semibold"
               }
             >
               {boton}
