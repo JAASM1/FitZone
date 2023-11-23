@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
@@ -12,7 +12,7 @@ import { decode } from "punycode";
 
 function IniciarSesion() {
   const navigate = useNavigate()
-  const { login, loginAdmin, isAdmin } = useAuth();
+  const { login, loginAdmin, isAdmin, setIsAdmin } = useAuth();
   const [user_email, setEmail] = useState("");
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -65,10 +65,11 @@ function IniciarSesion() {
       }
     }
   };
-
+  
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -115,6 +116,7 @@ function IniciarSesion() {
         if (decodedToken && decodedToken.user_type === 1) {
           Swal.close()
           loginAdmin();
+          setIsAdmin(true)
           console.log(isAdmin)
           navigate("/Estadisticas");
           return;
