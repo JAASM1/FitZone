@@ -187,7 +187,7 @@ function IniciarSesion() {
                 className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
               />
               <span
-                className=" absolute top-[16.5rem] left-[21.4rem] cursor-pointer"
+                className=" absolute top-[14.9rem] left-[21.4rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
