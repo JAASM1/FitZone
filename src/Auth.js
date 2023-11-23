@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
 
     const loginAdmin = () => {
         setIsAdmin(true)
-        navigate('/Bienvenida')
+        console.log(isAdmin)
     }
 
     const logoutAdmin = () => {
@@ -29,8 +29,16 @@ export function AuthProvider({ children }) {
       localStorage.removeItem("token");
     };
 
+
+
+    useEffect(() => {
+      console.log(isAdmin); // Esto aimprimirá el valor actualizado de isAdmin
+      // Puedes realizar otras acciones aquí después de que isAdmin se haya actualizado
+    }, [isAdmin]);
+    
+
     return (
-      <AuthContext.Provider value={{ isLoggedIn, login, logout, loginAdmin, logoutAdmin, isAdmin }}>
+      <AuthContext.Provider value={{ isLoggedIn, login, logout, loginAdmin, logoutAdmin, isAdmin, setIsAdmin }}>
         {children}
       </AuthContext.Provider>
     );
