@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from 'axios'
+import axios from "axios";
 import bnnEjercicos from "../../asset/img/ejercicios/bnnEjercicio1.jpg";
+import bnnMovilEjercicos from "../../asset/img/ejercicios/bnnMovil.jpg";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
 
@@ -8,8 +9,9 @@ import { useAuth } from "../../Auth";
 import Swal from "sweetalert2";
 
 function Ejercicios() {
-  const [count, setCount] = useState(""); // count recibe el valor del button
+  const [count, setCount] = useState(""); // variables recibe el valor del button
   const [data, setData] = useState(); //variables de extraccion de datos de la api
+  const [showMore, setShowMore] = useState(false); //variables para la funcionalidad Mostrar más/Mostrar menos
 
   const { isLoggedIn } = useAuth();
 
@@ -55,29 +57,32 @@ function Ejercicios() {
       <Navbar />
       <div className="font-Montserrat bg-[#333333] text-white">
         <div className="flex items-center">
-          <div className="flex flex-col absolute left-48">
-            <p className="text-[3.5rem] font-semibold">
+          <div className="flex flex-col absolute md:left-48 max-md:ml-10">
+            <p className="md:text-[3.5rem] text-2xl font-semibold">
               Bienvenido a tú guía de
             </p>
-            <p className="text-7xl text-[#EFB810] font-extrabold uppercase">
+            <p className="md:text-7xl text-4xl text-[#EFB810] font-extrabold uppercase">
               Ejercicios
             </p>
           </div>
-          <div>
+          <div className="max-md:hidden">
             <img src={bnnEjercicos} alt="ejercicios" />
+          </div>
+          <div className="md:hidden">
+            <img src={bnnMovilEjercicos} alt="ejercicios" />
           </div>
         </div>
 
         <div className="flex flex-col items-center mt-10">
           <div>
-            <p className="text-4xl font-semibold mb-12">
+            <p className="md:text-4xl text-lg max-md:text-center font-semibold mb-12">
               Selecciona el músculo que deseas ejercitar
             </p>
           </div>
 
           {/* ////////////////////////////////////Buttons/////////////////////////////////////// */}
           <div className="flex flex-col items-center gap-6">
-            <div className="flex gap-5">
+            <div className="md:flex grid grid-cols-2 gap-5">
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
@@ -133,7 +138,7 @@ function Ejercicios() {
                 Calves
               </button>
             </div>
-            <div className="flex gap-5">
+            <div className="md:flex grid grid-cols-2 gap-5">
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
@@ -189,7 +194,7 @@ function Ejercicios() {
                 Middle back
               </button>
             </div>
-            <div className="flex gap-5">
+            <div className="md:flex grid grid-cols-2 gap-5">
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
                 type="button"
@@ -227,21 +232,35 @@ function Ejercicios() {
                 Quadriceps
               </button>
             </div>
+            {/* Mapeo de data */}
             <div className="flex flex-col p-10">
-              <ul className="grid grid-cols-2 gap-5">
+              <ul className="md:grid md:grid-cols-2 gap-5 max-md:space-y-5">
                 {data?.map((exercise) => (
                   <li
                     key={exercise.id}
-                    className="bg-zinc-600 text-white capitalize p-10 rounded-xl text-justify transition-all"
+                    className={`bg-zinc-600 text-white capitalize md:p-10 p-5 rounded-xl md:text-justify`}
                   >
-                    <div>
-                      <h3 className="text-[#EFB810] font-semibold text-4xl">
+                    <div className="max-md:space-y-1">
+                      <h3 className="text-[#EFB810] font-semibold md:text-4xl text-3xl">
                         {exercise.name}
                       </h3>
                       <p className="text-xl">{exercise.muscle}</p>
                       <p className="text-xl">{exercise.equipment}</p>
                       <p className="text-xl">{exercise.difficulty}</p>
-                      <p className="text-sm normal-case">{exercise.instructions}</p>
+                      <p className="text-sm text-justify normal-case">
+                        {showMore
+                          ? exercise.instructions
+                          : exercise.instructions.slice(0, 200)}{" "}
+                        {/* Mostrar solo los primeros 150 caracteres */}
+                        {exercise.instructions.length > 150 && (
+                          <button
+                            className="px-2 rounded-lg font-semibold bg-[#EFB810]"
+                            onClick={() => setShowMore(!showMore)}
+                          >
+                            {showMore ? "Mostrar menos" : "Mostrar más"}
+                          </button>
+                        )}
+                      </p>
                     </div>
                   </li>
                 ))}

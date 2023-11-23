@@ -5,12 +5,14 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
 import { useAuth } from "../../Auth";
 import Swal from "sweetalert2";
-
+import { CiSearch } from "react-icons/ci";
 function Nutricion() {
   const [nutrition, setNutrition] = useState("");
   const [nutritionData, setNutritionData] = useState(null);
   const [error, setError] = useState(null);
   const { isLoggedIn } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleInputChange = (e) => {
     setNutrition(e.target.value);
@@ -32,7 +34,10 @@ function Nutricion() {
       return;
     }
 
+  
     setError(null); // Limpiar errores si no hay problemas
+    setIsLoading(true); // Inicia el estado de carga
+
 
     try {
       const result = await fetch(
@@ -68,6 +73,8 @@ function Nutricion() {
     } catch (error) {
       console.error("Error:", error);
       setError("Hubo un problema al buscar la información.");
+    } finally {
+      setIsLoading(false)
     }
   };
 
@@ -158,7 +165,7 @@ function Nutricion() {
           <div className="w-[23.65rem] h-[0.065rem] bg-zinc-700 absolute top-[16%] md:left-[39%]"></div>
         </div>
         <div className="w-[38.5rem] h-[16.187rem] absolute top-[22%] md:top-[25%] left-[15%] md:left-[30%] flex md:justify-center">
-          <div className="relative">
+          <div className="relative w-[16rem] h-[2.9rem]">
             {/* Barra de busqueda */}
             <input
               type="text"
@@ -169,32 +176,17 @@ function Nutricion() {
             />
             <button
               onClick={getNutrition}
-              className="cursor-pointer absolute right-0 top-[-7%] left-[85%] bottom-0 mt-4 mr-4 bg-zinc-800 z-10 w-[2.9rem] h-[3.1rem] rounded-full"
+              className="cursor-pointer absolute right-0  left-[85%] bottom-0 mt-4 mr-4 bg-zinc-800 z-10 w-[2.9rem] h-[3.1rem] rounded-full"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className=" ml-[0.8rem] md:ml-[4.5]"
-                class="icon icon-tabler icon-tabler-search"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#ffbf00"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                <path d="M21 21l-6 -6" />
-              </svg>
+              <CiSearch className="mx-auto text-amber-500 text-2xl" />
             </button>
           </div>
         </div>
 
         {/* Mapeado de resultados y manejo de errores */}
 
-        {nutritionData && nutritionData.length > 0 ? (
+
+        {!isLoading && !error  && nutritionData && nutritionData.length  > 0 ? (
           <div className="w-[19rem] md:w-[31rem] md:h-[14rem] h-[15rem] bg-zinc-700 rounded-xl absolute top-[40%] left-[12%] md:left-[34%]">
             {nutritionData.map((item, index) => (
                 <div
@@ -224,16 +216,25 @@ function Nutricion() {
                   </div>
                 </div>
             ))}
+                        {error && <p className="text-red-500 font-semibold text-xl mx-auto bg-black">{error}</p>}
+        {isLoading && <p className="text-white font-semibold text-xl mx-auto bg-black">Cargando...</p>}
           </div>
+          
         ) : (
           <div className="w-full h-full flex flex-col">
             <h2 className="text-white mt-[15rem] font-semibold text-xl mx-auto">
               No hay ningún resultado...
             </h2>
-            {error && <p className="text-red-500 mx-auto">{error}</p>}
+            {error && <p className="text-red-500 font-semibold text-xl mx-auto bg-black">{error}</p>}
+            {isLoading && <p className="text-white font-semibold text-xl mx-auto bg-black">Cargando...</p>}
           </div>
+          
         )}
+
       </div>
+
+      
+
       <Footer />
     </div>
   );

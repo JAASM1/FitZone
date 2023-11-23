@@ -1,12 +1,32 @@
 // import {NavLink} from 'react-router-dom'
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../Auth'
-import { AiOutlineLogout } from 'react-icons/ai'
+import { IoLogOutOutline } from 'react-icons/io5'
 import Swal from 'sweetalert2'
+import { jwtDecode } from 'jwt-decode'
 
 function Navbar() {
- const { isLoggedIn, logout, isAdmin } = useAuth()
+ const { isLoggedIn, logout, isAdmin, setIsAdmin } = useAuth()
+
+ useEffect(() => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        if (decodedToken.user_type === 1) {
+          setIsAdmin(true);
+          console.log(decodedToken.user_type);
+        } else {
+          console.log("No eres admin");
+        }
+      } else {
+        console.log("No hay token");
+      }}, []);
+
+ useEffect(() => {
+    console.log(isAdmin);
+  }, [isAdmin]);
+
 
  const handleLogout = () => {
     Swal.fire({
@@ -38,7 +58,7 @@ function Navbar() {
             {isLoggedIn ? (
                 <button
                 onClick={handleLogout}>
-                    <AiOutlineLogout className='text-white'></AiOutlineLogout>
+                    <IoLogOutOutline className='text-white text-3xl hover:text-[#EFB810] md:relative md:left-[76rem]'></IoLogOutOutline>
                 </button>
             )
                 : (
