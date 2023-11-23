@@ -44,7 +44,7 @@ function Footer() {
 
           <div className='flex flex-col gap-8 max-md:items-center'>
             <p className='font-bold md:text-lg text-xs uppercase'>Sobre FitZone</p>
-            <p className='md:mr-10 md:font-light font-extralight max-md:text-xs max-md:text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pulvinar ipsum sed massa maximus convallis. Nulla facilisi. Sed eget tortor nibh. Nunc at pulvinar nulla, ac volutpat turpis. In hac habitasse platea dictumst. </p>
+            <p className='md:mr-10 md:font-light font-extralight max-md:text-xs max-md:text-center'>Tu destino para la transformación física y mental. Con programas de ejercicio personalizados, nutrición equilibrada y motivación constante, en FitZone te ayudamos a alcanzar tus metas de bienestar. ¡Únete a la comunidad FitZone y da forma a tu mejor versión hoy mismo!"</p>
           </div>
 
 

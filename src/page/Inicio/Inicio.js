@@ -46,20 +46,20 @@ function Inicio() {
           <p className='text-3xl font-bold uppercase max-md:text-center'>Lo que <br/>ofrecemos</p>
         </div>
         <div className='grid md:grid-cols-3 md:gap-36 gap-5 justify-center'>
-          <div className='bg-black w-[298px] h-[250px] flex flex-col justify-center p-10 gap-3 rounded-3xl'>
+          <div className='bg-black w-[298px] h-[250px] flex flex-col justify-center items-center p-10 gap-3 rounded-3xl'>
             <img src={iconEjercicio} alt='icono ejercicio' className='w-12'></img>
             <p className='text-lg uppercase font-medium'>Ejercicios</p>
-            <p className='text-sm font-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br></br> Nulla pulvinar ipsum sed massa maximus convallis.</p>
+            <p className='text-sm font-light text-center'>Proporcionar información sobre ejercicios específicos dirigidos a diferentes grupos musculares</p>
           </div>
-          <div className='bg-black w-[298px] h-[250px] flex flex-col justify-center p-10 gap-3 rounded-3xl'>
+          <div className='bg-black w-[298px] h-[250px] flex flex-col justify-center items-center p-10 gap-3 rounded-3xl'>
             <img src={iconNutricion} alt='icono nutricion' className='w-12'></img>
             <p className='text-lg uppercase font-medium'>Nutricion</p>
-            <p className='text-sm font-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pulvinar ipsum sed massa maximus convallis.</p>
+            <p className='text-sm font-light text-center'>Ofrecer recetas y detalles nutricionales para una alimentación saludable</p>
           </div>
-          <div className='bg-black w-[298px] h-[250px] flex flex-col justify-center p-10 gap-3 rounded-3xl'>
+          <div className='bg-black w-[298px] h-[250px] flex flex-col justify-center items-center p-10 gap-3 rounded-3xl'>
             <img src={iconCalorias} alt='icono calorias' className='w-12'></img>
             <p className='text-lg uppercase font-medium'>Calorias</p>
-            <p className='text-sm font-light'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pulvinar ipsum sed massa maximus convallis.</p>
+            <p className='text-sm font-light text-center'>Calcular y mostrar la cantidad de calorías quemadas durante diferentes actividades físicas</p>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@ function Inicio() {
       <div className='flex flex-col items-end justify-center'>
         <div className='flex flex-col bg-[#EFB810] text-black md:w-[724px] md:h-[478px] w-[250px] h-[180px] md:gap-11 gap-2 justify-center items-center absolute md:right-28 right-5'>
           <p className='md:text-4xl text-xs font-bold text-center uppercase md:tracking-[10px]'>Nunca es tarde <br/> para empezar</p>
-          <p className='text-justify md:text-xl text-[10px]'>Lorem ipsum dolor sit amet, consectetur <br/> adipiscing elit. Nulla pulvinar ipsum sed <br/> massa maximus convallis. Nulla facilisi. Sed <br/> eget tortor nibh. Nunc at pulvinar nulla, ac <br/> volutpat turpis. In hac habitasse platea <br/> dictumst. </p>
+          <p className='text-center md:text-xl text-[10px]'>"El cambio comienza hoy. Cada pequeño paso<br/> cuenta en tu viaje hacia una vida más saludable.<br/> Con determinación, construyes un mañana más fuerte.<br/> ¡Hoy, da ese primer paso hacia tu mejor versión!"</p>
         </div>
         <div>
           <img src={ img2 } alt='' className='max-md:hidden'/>
