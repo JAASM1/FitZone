@@ -9,18 +9,16 @@ function Sidebar() {
   return (
     <>
       <div
-        class={`bg-black fixed top-0 bottom-0 h-screen pt-8 transition-all ${
+        class={`bg-black fixed top-0 bottom-0 md:h-screen pt-8 transition-all ${
           open ? "w-60" : "md:w-20 w-16"
         } duration-500 relative`}
       >
-        <div>
-          <HiArrowLongRight
-            className={`bg-white text-black text-3xl rounded-full absolute -right-3 top-4 cursor-pointer ${
-              open && "rotate-180"
-            }`}
-            onClick={() => setOpen(!open)}
-          />
-        </div>
+        <HiArrowLongRight
+          className={`bg-white text-black text-3xl rounded-full absolute -right-3 top-4 cursor-pointer ${
+            open && "rotate-180"
+          }`}
+          onClick={() => setOpen(!open)}
+        />
         <ul class="m-5 flex flex-col gap-5">
           <a href="/Estadisticas">
             <li
