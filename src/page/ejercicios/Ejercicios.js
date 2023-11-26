@@ -84,7 +84,7 @@ function Ejercicios() {
           <div className="flex flex-col items-center gap-6">
             <div className="md:flex grid grid-cols-2 gap-5">
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("adductors");
@@ -93,7 +93,7 @@ function Ejercicios() {
                 Adductor
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("abductors");
@@ -102,7 +102,7 @@ function Ejercicios() {
                 Abductors
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("abdominals");
@@ -111,7 +111,7 @@ function Ejercicios() {
                 Abdominals
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("biceps");
@@ -120,7 +120,7 @@ function Ejercicios() {
                 Biceps
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("chest");
@@ -129,7 +129,7 @@ function Ejercicios() {
                 Chest
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("calves");
@@ -140,7 +140,7 @@ function Ejercicios() {
             </div>
             <div className="md:flex grid grid-cols-2 gap-5">
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("forearms");
@@ -149,7 +149,7 @@ function Ejercicios() {
                 Forearms
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("glutes");
@@ -158,7 +158,7 @@ function Ejercicios() {
                 Glutes
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("hamstrings");
@@ -167,7 +167,7 @@ function Ejercicios() {
                 Hamstrings
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("lower_back");
@@ -176,7 +176,7 @@ function Ejercicios() {
                 Lower back
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("lats");
@@ -185,7 +185,7 @@ function Ejercicios() {
                 Lats
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("middle_back");
@@ -196,7 +196,7 @@ function Ejercicios() {
             </div>
             <div className="md:flex grid grid-cols-2 gap-5">
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("neck");
@@ -205,7 +205,7 @@ function Ejercicios() {
                 Neck
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("triceps");
@@ -214,7 +214,7 @@ function Ejercicios() {
                 Triceps
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("traps");
@@ -223,7 +223,7 @@ function Ejercicios() {
                 Traps
               </button>
               <button
-                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] focus:text-black"
+                className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
                 type="button"
                 onClick={() => {
                   handleButtonClick("quadriceps");
@@ -238,7 +238,7 @@ function Ejercicios() {
                 {data?.map((exercise) => (
                   <li
                     key={exercise.id}
-                    className={`bg-zinc-600 text-white capitalize md:p-10 p-5 rounded-xl md:text-justify`}
+                    className={`bg-zinc-600 text-white capitalize md:p-10 p-5 rounded-3xl md:text-justify`}
                   >
                     <div className="max-md:space-y-1">
                       <h3 className="text-[#EFB810] font-semibold md:text-4xl text-3xl">
@@ -248,18 +248,7 @@ function Ejercicios() {
                       <p className="text-xl">{exercise.equipment}</p>
                       <p className="text-xl">{exercise.difficulty}</p>
                       <p className="text-sm text-justify normal-case">
-                        {showMore
-                          ? exercise.instructions
-                          : exercise.instructions.slice(0, 200)}{" "}
-                        {/* Mostrar solo los primeros 150 caracteres */}
-                        {exercise.instructions.length > 150 && (
-                          <button
-                            className="px-2 rounded-lg font-semibold bg-[#EFB810]"
-                            onClick={() => setShowMore(!showMore)}
-                          >
-                            {showMore ? "Mostrar menos" : "Mostrar más"}
-                          </button>
-                        )}
+                        {exercise.instructions}
                       </p>
                     </div>
                   </li>
