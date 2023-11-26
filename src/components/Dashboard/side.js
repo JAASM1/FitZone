@@ -9,7 +9,7 @@ function Sidebar() {
   return (
     <>
       <div
-        class={`bg-black fixed top-0 bottom-0 md:h-screen pt-8 transition-all ${
+        className={`bg-black fixed top-0 bottom-0 md:h-screen pt-8 transition-all ${
           open ? "w-60" : "md:w-20 w-16"
         } duration-500 relative`}
       >
@@ -19,7 +19,7 @@ function Sidebar() {
           }`}
           onClick={() => setOpen(!open)}
         />
-        <ul class="m-5 flex flex-col gap-5">
+        <ul className="m-5 flex flex-col gap-5">
           <a href="/Estadisticas">
             <li
               className="text-[#EFB810] flex items-center gap-x-4 md:p-2 max-md:pt-5 hover:bg-light-white 
