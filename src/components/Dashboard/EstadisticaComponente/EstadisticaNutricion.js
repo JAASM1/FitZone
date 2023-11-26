@@ -41,7 +41,7 @@ function EstadisticaNutricion() {
       {loading ? (
         <p>Cargando...</p>
       ) : (
-        <div className="border shadow-lg rounded-full md:w-[300px] md:h-[300px] w-[400px] h-[300px] bg-white">
+        <div className="border shadow-lg rounded-full md:w-[300px] md:h-[300px] w-[250px] h-[250px] bg-white">
           <Wordcloud
             words={wordData}
             options={{
