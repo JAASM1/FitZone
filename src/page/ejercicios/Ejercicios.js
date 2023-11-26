@@ -238,7 +238,7 @@ function Ejercicios() {
                 {data?.map((exercise) => (
                   <li
                     key={exercise.id}
-                    className={`bg-zinc-600 text-white capitalize md:p-10 p-5 rounded-xl md:text-justify`}
+                    className={`bg-zinc-600 text-white capitalize md:p-10 p-5 rounded-3xl md:text-justify`}
                   >
                     <div className="max-md:space-y-1">
                       <h3 className="text-[#EFB810] font-semibold md:text-4xl text-3xl">

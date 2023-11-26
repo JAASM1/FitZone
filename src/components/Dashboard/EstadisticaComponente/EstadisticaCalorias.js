@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Wordcloud from "react-wordcloud";
 
-function EstadisticaNutricion() {
+function EstadisticaCalorias() {
   const [wordData, setWordData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -64,4 +64,4 @@ function EstadisticaNutricion() {
   );
 }
 
-export default EstadisticaNutricion;
+export default EstadisticaCalorias;

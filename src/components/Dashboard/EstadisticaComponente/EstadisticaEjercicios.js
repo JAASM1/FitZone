@@ -1,45 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-import { HiOutlineTrophy } from "react-icons/hi2";
+import Wordcloud from "react-wordcloud";
 
 function EstadisticaEjercicios() {
-  const [topButtons, setTopButtons] = useState([]);
+  const [wordData, setWordData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const obtenerTopButtons = async () => {
+    const obtenerTopPalabras = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/fitzone/topValorBotones"
-        );
-        setTopButtons(response.data.topButtons);
+        setLoading(true);
+        const response = await axios.get("http://localhost:8080/fitzone/topEjercicios");
+        console.log("Datos recibidos:", response.data);
+    
+        const topButtons = response.data.topWords || [];
+        const formattedData = topButtons.map((word, index) => ({
+          text: word.word,
+          value: word.frequency,
+          key: index.toString(),
+        }));
+    
+        setWordData(formattedData);
+        console.log("wordData actualizado:", wordData);
+        setLoading(false);
       } catch (error) {
-        console.error("Error al obtener las top palabras de botones:", error);
+        console.error("Error al obtener las top palabras de ejercicios:", error);
+        setLoading(false);
       }
     };
+        
 
-    obtenerTopButtons();
+    obtenerTopPalabras();
   }, []);
+
   return (
-    <div className="flex flex-col items-center md:gap-5 gap-3">
-      <h3 className="md:text-4xl text-3xl font-semibold text-white">Ejercicios</h3>
-      <div className="border shadow-lg rounded-xl flex justify-center items-center md:w-[275px] md:h-[200px] w-[225px] h-[150px] bg-white">
-        <ul className="capitalize space-y-3 text-center">
-          {topButtons.map((boton, index) => (
-            <li
-              key={index}
-              className={
-                index === 0
-                  ? `md:text-3xl text-2xl text-[#EFB810] font-bold flex gap-2 items-center`
-                  : "text-lg md:text-xl font-semibold"
-              }
-            >
-              {boton}
-              {index === 0 ? <HiOutlineTrophy className="" /> : ""}
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="flex flex-col items-center md:gap-5 gap-3 font-Montserrat">
+      <h3 className="md:text-4xl text-3xl font-semibold text-white">
+        Ejercicios
+      </h3>
+      {loading ? (
+        <p>Cargando...</p>
+      ) : (
+        <div className="border shadow-lg rounded-full md:w-[300px] md:h-[300px] w-[400px] h-[300px] bg-white">
+          <Wordcloud
+            words={wordData}
+            options={{
+              wordScale: "sqrt",
+              fontFamily: "Montserrat",
+              fontWeight: "bold",
+            }}
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              padding: "10px", // Ajusta el espaciado general
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
