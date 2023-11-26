@@ -187,7 +187,7 @@ function IniciarSesion() {
                 className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
               />
               <span
-                className=" absolute top-[15.8rem] left-[21.4rem] cursor-pointer"
+                className=" absolute top-[14.9rem] left-[21.4rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
@@ -201,16 +201,23 @@ function IniciarSesion() {
                 <p className="text-red-500 text-[0.6rem] mt-2">{error}</p>
               )}  
 
-              <Link to='/Contraseña'>
+              {/* <Link to='/Contraseña'>
                 <p className="p-2">¿Ha olvidado su contraseña?</p>
-              </Link>
+              </Link> */}
 
               <button
-                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono mb-3"
+                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono mb-3 mt-5"
                 type='button'
                 onClick={handleLogin}>
                 Acceder
               </button>
+
+              <div className=" w-full text-center flex items-center mb-2">
+                <div className="bg-slate-500 w-[30%] h-[1px]"></div>
+                <p className="p-2 text-sm">O accede con </p>
+                <div className="bg-slate-500 w-[30%] h-[1px]"></div>
+
+              </div>
  
               <GoogleLoginButton
                 clientId={"48190451362-g56p8ihvpbnkf4e5ujj0brh133p9elsh.apps.googleusercontent.com"}
