@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import img1 from '../../asset/img/inicio/img1.jpg'
 import img2 from '../../asset/img/inicio/img2.jpg'
 import imgMovil from '../../asset/img/inicio/imgMovil.jpg'
@@ -11,8 +11,30 @@ import iconEjercicio from '../../asset/icons/pesa (1).png'
 import iconNutricion from '../../asset/icons/nutricion.png'
 import iconCalorias from '../../asset/icons/calorias.png'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../Auth'
+import { jwtDecode } from 'jwt-decode'
 
 function Inicio() {
+
+  const { isLoggedIn } = useAuth()
+  const [username, setUserName] = useState("")
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const decodedToken = jwtDecode(token);
+        setUserName(decodedToken.user_name);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []); 
+
+
+
   return (
     <div className='text-white bg-[#333] font-Montserrat'>
       <Navbar/>
@@ -27,9 +49,12 @@ function Inicio() {
             <p >Vuélvete <snap className='text-[#EFB810]'>fit</snap></p>
           </div>
           <div>
-            <Link to='/Iniciar sesion'>
-              <button className='border-2 border-[#EFB810] p-2 px-5 rounded-full font-medium'>Iniciar ahora</button>
-            </Link>
+            {isLoggedIn ? (
+              <p>Bienvenido, <span className='text-[#EFB810]'>{username}</span> </p>
+            ):             <Link to='/Iniciar sesion'>
+            <button className='border-2 border-[#EFB810] p-2 px-5 rounded-full font-medium'>Iniciar ahora</button>
+          </Link>}
+
           </div>   
         </div>
         <div className='max-md:hidden'>
