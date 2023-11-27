@@ -20,10 +20,9 @@ function Registrarse() {
             setError("Por favor, ingresa todos los campos.")
             return;
         }
-        const allowedCharactersRegex = /^[a-zA-Z0-9]+$/;
-        if (user_password.length < 8 || !allowedCharactersRegex.test(user_password)) {
-        setError("La contraseña no cumple con los requisitos de seguridad.");
-        return;
+        if (user_password.length < 8) {
+            setError("La contraseña debe tener al menos 8 caracteres.");
+            return;
         }
         
         try {
