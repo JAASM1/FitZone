@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { FaHome } from "react-icons/fa";
 
 function Registrarse() {
 
@@ -19,13 +20,19 @@ function Registrarse() {
             setError("Por favor, ingresa todos los campos.")
             return;
         }
-
+        const allowedCharactersRegex = /^[a-zA-Z0-9]+$/;
+        if (user_password.length < 8 || !allowedCharactersRegex.test(user_password)) {
+        setError("La contraseña no cumple con los requisitos de seguridad.");
+        return;
+        }
+        
         try {
             Swal.fire({
                 title: "Cargando...",
                 text: "Por favor, espera un momento.",
                 allowOutsideClick: false,
                 showConfirmButton: false,
+                timer: 7000,
                 willOpen: () => {
                   Swal.showLoading();
                 },
@@ -54,12 +61,13 @@ function Registrarse() {
                     navigate('/Iniciar Sesion')
                 })
             } else {
-                const text = await response.text();
+                const data = await response.json();
 
-                if (text) {
-                    const data = JSON.parse(text);
-                    setError(data.message);
+                if (response.status === 400 && data.error === "Correo electrónico duplicado") {
+                    console.log("Correo electrónico duplicado. Mostrar mensaje de error.");
+                    setError("El correo electrónico ya está en uso. Por favor, utiliza otro.");
                 } else {
+                    console.log("Error de registro. Mostrar mensaje de error genérico.");
                     setError("Error de registro. Por favor, inténtalo de nuevo.");
                 }
             }
@@ -69,15 +77,31 @@ function Registrarse() {
         }
     }
 
-
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
+    const [hovered, setHovered] = useState(false);
+  
+    const handleHover = () => {
+        setHovered(!hovered);
+    };
+
+    const buttonStyle = {
+        fontSize: '40px',
+        color: hovered ? '#EFB810' : 'white',
+    };
 
     return (
         <div className='font-Montserrat'>
             <div className='bg-image1 h-screen bg-cover flex justify-center items-center'>
+                <div>
+                    <Link to="/">
+                        <button className="flex items-center justify-center absolute left-10 top-10" style={buttonStyle} onMouseEnter={handleHover} onMouseLeave={handleHover}>
+                        <FaHome/>
+                        </button>
+                    </Link>
+                </div>
                 <div className="bg-[#272733] relative overflow-hidden rounded-3xl w-[350px] lg:w-[750px] h-[480px]">
                     <div className="absolute top-0 h-[100%] transition-all ease-in-out w-[150%] lg:left-64 lg:w-[80%]">
                         <form onSubmit={handleRegister} className="bg-[#272733] flex justify-center items-center flex-col px-16 w-[68%] lg:w-[100%] lg:px-40 lg:h-[100%] text-[#EFB810]" action=''>
