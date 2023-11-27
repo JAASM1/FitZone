@@ -152,8 +152,10 @@ function Nutricion() {
           cual desees saber más.
         </p>
         <p className="w-[10rem] md:w-[60.5rem] text-center text-white font-[100] absolute left-[28%] md:left-[20%] top-[58%] md:top-[50%] text-[0.9rem] md:text-[1rem]">
-          Desde blogs de comida hasta menús y recetas, puede leer cualquier
-          texto y calcular los datos nutricionales correspondientes.
+          ¡Inténtalo tú mismo! Puedes intentar buscar palabras como "manzana" o "plátano".
+        </p>
+        <p className="w-[20rem] md:w-[60.5rem] text-center text-black font-[100] absolute left-[10%] md:left-[20%] top-[85%] md:top-[80%] text-[0.9rem] md:text-[1rem]">
+          Toda la información está basada en 100 gramos del alimento buscado.
         </p>
       </div>
       {/* zona de API */}
