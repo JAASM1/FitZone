@@ -12,8 +12,7 @@ import Calorias from './page/calorias/Calorias'
 import IniciarSesion from './page/login/iniciosesion';
 import Registrarse from './page/login/registrarse';
 import ContraOlvidado from './page/login/olvidado';
-import Welcome from './components/Dashboard/welcome'
-import Estadisticas from './components/Dashboard/Estadisticas.js'
+import Dashboard from './components/Dashboard/Estadisticas.js'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -24,7 +23,7 @@ const AppRoutes = () => {
     {path: '/Iniciar sesion', element: <IniciarSesion></IniciarSesion>},
     {path: '/Registrarse' , element: <Registrarse></Registrarse>},
     {path: '/Contraseña', element: <ContraOlvidado></ContraOlvidado>},
-    {path: '/Estadisticas' , element: <Estadisticas/>},
+    {path: '/Dashboard' , element: <Dashboard/>},
   ])
   return routes
 }

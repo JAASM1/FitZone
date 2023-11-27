@@ -15,6 +15,8 @@ function Ejercicios() {
   const [count, setCount] = useState(""); // variables recibe el valor del button
   const [data, setData] = useState(); //variables de extraccion de datos de la api
 
+  const [loading, setLoading] = useState(false);
+
   const [selectedType, setSelectedType] = useState("");
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [filtered, setFiltered] = useState([]);
@@ -57,8 +59,9 @@ function Ejercicios() {
   const handleButtonClick = async (muscle) => {
     if (isLoggedIn) {
       setCount(muscle);
-
+      setLoading(true);
       try {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         await axios.post("http://localhost:8080/fitzone/valorBoton", {
           buttonName: muscle,
         });
@@ -67,6 +70,8 @@ function Ejercicios() {
           "Error al enviar la información del botón al backend:",
           error
         );
+      } finally {
+        setLoading(false);
       }
     } else {
       Swal.fire({
@@ -81,6 +86,7 @@ function Ejercicios() {
   return (
     <>
       <Navbar />
+      {/* div principal */}
       <div className="font-Montserrat bg-[#333333] text-white">
         <div ref={ref} className="flex items-center">
           <motion.div
@@ -121,8 +127,8 @@ function Ejercicios() {
             </p>
           </div>
 
-          {/* ////////////////////////////////////Buttons/////////////////////////////////////// */}
           <div className="flex flex-col items-center gap-6">
+            {/* ////////////////////////////////////Buttons/////////////////////////////////////// */}
             <div className="md:flex grid grid-cols-2 gap-5">
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -312,31 +318,45 @@ function Ejercicios() {
               </div>
             )}
 
-            {/* Mapeo de data */}
-            <div className="flex flex-col p-10">
-              <ul className="md:grid md:grid-cols-2 gap-5 max-md:space-y-5">
-                {filtered?.map((exercise) => (
-                  <li
-                    key={exercise.id}
-                    className={`bg-zinc-600 text-white capitalize md:p-10 p-5 rounded-3xl md:text-justify`}
-                  >
-                    <div className="max-md:space-y-1">
-                      <h3 className="text-[#EFB810] font-semibold md:text-4xl text-3xl">
-                        {exercise.name}
-                      </h3>
-                      <p className="text-xl">{exercise.muscle}</p>
-                      <p className="text-xl">{exercise.type}</p>
-                      <p className="text-xl">{exercise.equipment}</p>
-                      <p className="text-xl">{exercise.difficulty}</p>
-                      <p className="text-sm text-justify normal-case">
-                        {exercise.instructions}
-                      </p>
-                      {/* {console.log(exercise.name,exercise.instructions)} */}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {loading && (
+              <div className="flex flex-col items-center">
+                <p className="text-2xl font-Montserrat font-semibold text-white mt-10 mb-2">
+                  Cargando
+                </p>
+                <div class="flex flex-row gap-2">
+                  <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce"></div>
+                  <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.2s]"></div>
+                  <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.4s]"></div>
+                </div>
+              </div>
+            )}
+            {!loading && (
+              // Mapeo de data
+              <div className="flex flex-col p-10">
+                <ul className="md:grid md:grid-cols-2 gap-5 max-md:space-y-5">
+                  {filtered?.map((exercise) => (
+                    <li
+                      key={exercise.id}
+                      className={`bg-zinc-600 text-white capitalize md:p-10 p-5 rounded-3xl md:text-justify`}
+                    >
+                      <div className="max-md:space-y-1">
+                        <h3 className="text-[#EFB810] font-semibold md:text-4xl text-3xl">
+                          {exercise.name}
+                        </h3>
+                        <p className="text-xl">{exercise.muscle}</p>
+                        <p className="text-xl">{exercise.type}</p>
+                        <p className="text-xl">{exercise.equipment}</p>
+                        <p className="text-xl">{exercise.difficulty}</p>
+                        <p className="text-sm text-justify normal-case">
+                          {exercise.instructions}
+                        </p>
+                        {/* {console.log(exercise.name,exercise.instructions)} */}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

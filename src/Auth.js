@@ -7,27 +7,34 @@ const AuthContext = createContext()
 export function AuthProvider({ children }) {
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
-    const [isAdmin, setIsAdmin] = useState(false);
-
+    const [isAdmin, setIsAdmin] = useState(() => {
+      // Obtener el estado de isAdmin desde localStorage
+      const isAdminStored = localStorage.getItem("isAdmin");
+      return isAdminStored ? JSON.parse(isAdminStored) : false;
+    });
     const login = () => {
       setIsLoggedIn(true);
     };
 
     const loginAdmin = () => {
         setIsAdmin(true)
-        console.log(isAdmin)
-    }
+        localStorage.setItem("isAdmin", JSON.stringify(true));
+        console.log('Usuario ahora es administrador:', isAdmin);
+      }
 
     const logoutAdmin = () => {
-      setIsAdmin(false)
-    }
+      setIsAdmin(false);
+      localStorage.setItem("isAdmin", JSON.stringify(false));
+      console.log('Usuario ya no es administrador:', isAdmin);
+    };
   
     const logout = () => {
       setIsLoggedIn(false);
-      setIsAdmin(false)
-      navigate('/')
+      setIsAdmin(false);
+      navigate("/");
       localStorage.removeItem("token");
-    };
+      localStorage.removeItem("isAdmin");
+    }
 
 
 

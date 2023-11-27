@@ -65,8 +65,8 @@ function Navbar() {
                 <Link to="/Iniciar sesion" className=' text-amber-300 uppercase tracking-wider text-sm my-auto md:ml-[68rem]'>Inicia sesión</Link>
             )}
             {isAdmin ? (
-                <Link to="/Estadisticas">
-                    <h2 className='text-white md:ml-[68rem]'>Dashboard</h2>
+                <Link to="/Dashboard">
+                    <h2 className='text-white md:ml-[68rem] hover:text-[#EFB810] font-semibold'>Dashboard</h2>
                 </Link>
             ) : (
                 ""
