@@ -8,7 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { GoogleLoginButton } from "./logingoogle";
 import { decode } from "punycode";
-
+import { FaHome } from "react-icons/fa";
 
 function IniciarSesion() {
   const navigate = useNavigate()
@@ -69,7 +69,6 @@ function IniciarSesion() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -159,18 +158,34 @@ function IniciarSesion() {
     }
   };
 
+  const [hovered, setHovered] = useState(false);
   
+  const handleHover = () => {
+    setHovered(!hovered);
+  };
+
+  const buttonStyle = {
+    fontSize: '40px',
+    color: hovered ? '#EFB810' : 'white',
+  };
 
   return (
     <div className="font-Montserrat">
       <div className="bg-image h-screen bg-cover flex justify-center items-center">
+        <div>
+          <Link to="/">
+            <button className="flex items-center justify-center absolute left-10 top-10" style={buttonStyle} onMouseEnter={handleHover} onMouseLeave={handleHover}>
+              <FaHome/>
+            </button>
+          </Link>
+        </div>
         <div className="bg-[#272733] relative overflow-hidden rounded-3xl w-[350px] lg:w-[750px] h-[480px]">
           <div className="absolute top-0 h-[100%] transition-all ease-in-out left-0 w-[100%] lg:w-[50%]">
             <form
               onSubmit={handleLogin}
               className="bg-[#272733] flex justify-center items-center flex-col px-10 lg:h-[100%] text-[#EFB810]">
-              <h1 className="font-bold text-2xl mb-5 p-1">Iniciar sesion</h1>
-              <span className="text-sm mb-2 text-white">con sus credenciales de usuario</span>
+              <h1 className="font-bold text-2xl p-1">Iniciar sesion</h1>
+              <span className="text-sm text-white">con sus credenciales de usuario</span>
               <input
                 value={user_email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -226,7 +241,7 @@ function IniciarSesion() {
               />
             </form>
           </div>
-          <div className="absolute top-[75%] lg:top-0 lg:left-[50%] w-[100%] lg:w-[50%] h-[25%] lg:h-[100%] overflow-hidden lg:rounded-bl-[100px] lg:rounded-tl-[150px] z-96 transition-all ease-in-out font-Montserrat">
+          <div className="absolute top-[78%] lg:top-0 lg:left-[50%] w-[100%] lg:w-[50%] h-[25%] lg:h-[100%] overflow-hidden lg:rounded-bl-[100px] lg:rounded-tl-[150px] z-96 transition-all ease-in-out font-Montserrat">
             <div className="bg-[#EFB810] relative h-[100%] w-[200%] transition-all ease-in-out text-[#272733]">
               <div className="absolute w-[50%] h-[100%] flex justify-center items-center flex-col text-center top-0 transition-all ease-in-out px-[30px]">
                 <h1 className="font-bold text-2xl">Hola, GymBro!</h1>
