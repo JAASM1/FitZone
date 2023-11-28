@@ -13,7 +13,6 @@ function Nutricion() {
   const { isLoggedIn } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
-
   const handleInputChange = (e) => {
     setNutrition(e.target.value);
   };
@@ -34,10 +33,8 @@ function Nutricion() {
       return;
     }
 
-  
     setError(null); // Limpiar errores si no hay problemas
     setIsLoading(true); // Inicia el estado de carga
-
 
     try {
       const result = await fetch(
@@ -74,7 +71,7 @@ function Nutricion() {
       console.error("Error:", error);
       setError("Hubo un problema al buscar la información.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
@@ -187,55 +184,65 @@ function Nutricion() {
 
         {/* Mapeado de resultados y manejo de errores */}
 
-
-        {!isLoading && !error  && nutritionData && nutritionData.length  > 0 ? (
+        {!isLoading && !error && nutritionData && nutritionData.length > 0 ? (
           <div className="w-[19rem] md:w-[31rem] md:h-[14rem] h-[15rem] bg-zinc-700 rounded-xl absolute top-[40%] left-[12%] md:left-[34%]">
             {nutritionData.map((item, index) => (
-                <div
-                  key={index}
-                  className="w-[15rem] h-[10rem] md:ml-[8rem] ml-[2rem]"
-                >
-                  <p className="text-white flex justify-center w-[5rem] text-[1.4rem] md:text-[2rem] font-[700] uppercase mt-5 ml-[5.5rem] md:ml-[5rem]">
-                    {item.name}
-                  </p>
-                  <div className="w-[15rem] h-[2rem] flex justify-between mt-2">
-                    <p className="text-white">Calorías</p>
-                    <p className="text-amber-400">{item.calories} g</p>
-                  </div>
-                  <div className="w-[15rem] h-[2rem] flex justify-between">
-                    <p className="text-white">Grasas totales</p>
-                    <p className="text-amber-400">{item.fat_total_g} g</p>
-                  </div>
-                  <div className="w-[15rem] h-[2rem] flex justify-between">
-                    <p className="text-white">Proteína</p>
-                    <p className="text-amber-400">{item.protein_g} g</p>
-                  </div>
-                  <div className="w-[15rem] h-[2rem] flex justify-between">
-                    <p className="text-white">Carbohidratos</p>
-                    <p className="text-amber-400">
-                      {item.carbohydrates_total_g} g
-                    </p>
-                  </div>
+              <div
+                key={index}
+                className="w-[15rem] h-[10rem] md:ml-[8rem] ml-[2rem]"
+              >
+                <p className="text-white flex justify-center w-[5rem] text-[1.4rem] md:text-[2rem] font-[700] uppercase mt-5 ml-[5.5rem] md:ml-[5rem]">
+                  {item.name}
+                </p>
+                <div className="w-[15rem] h-[2rem] flex justify-between mt-2">
+                  <p className="text-white">Calorías</p>
+                  <p className="text-amber-400">{item.calories} g</p>
                 </div>
+                <div className="w-[15rem] h-[2rem] flex justify-between">
+                  <p className="text-white">Grasas totales</p>
+                  <p className="text-amber-400">{item.fat_total_g} g</p>
+                </div>
+                <div className="w-[15rem] h-[2rem] flex justify-between">
+                  <p className="text-white">Proteína</p>
+                  <p className="text-amber-400">{item.protein_g} g</p>
+                </div>
+                <div className="w-[15rem] h-[2rem] flex justify-between">
+                  <p className="text-white">Carbohidratos</p>
+                  <p className="text-amber-400">
+                    {item.carbohydrates_total_g} g
+                  </p>
+                </div>
+              </div>
             ))}
-                        {error && <p className="text-red-500 font-semibold text-xl mx-auto bg-black">{error}</p>}
-        {isLoading && <p className="text-white font-semibold text-xl mx-auto bg-black">Cargando...</p>}
+            {error && (
+              <p className="text-red-500 font-semibold text-xl mx-auto bg-black">
+                {error}
+              </p>
+            )}
+            {isLoading && (
+              <p className="text-white font-semibold text-xl mx-auto bg-black">
+                Cargando...
+              </p>
+            )}
           </div>
-          
         ) : (
           <div className="w-full h-full flex flex-col">
             <h2 className="text-white mt-[15rem] font-semibold text-xl mx-auto">
               No hay ningún resultado...
             </h2>
-            {error && <p className="text-red-500 font-semibold text-xl mx-auto bg-black">{error}</p>}
-            {isLoading && <p className="text-white font-semibold text-xl mx-auto bg-black">Cargando...</p>}
+            {error && (
+              <p className="text-red-500 font-semibold text-xl mx-auto bg-black">
+                {error}
+              </p>
+            )}
+            {isLoading && (
+              <p className="text-white font-semibold text-xl mx-auto bg-black">
+                Cargando...
+              </p>
+            )}
           </div>
-          
         )}
-
       </div>
-
-      
 
       <Footer />
     </div>

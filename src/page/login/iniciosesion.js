@@ -72,92 +72,104 @@ function IniciarSesion() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (user_email.trim() === ''){
-      setError("Por favor, ingresa tu correo electrónico antes de continuar.")
+    if (user_email.trim() === '') {
+      setError('Por favor, ingresa tu correo electrónico antes de continuar.');
       return;
     }
-    if (user_password.trim() === ''){
-      setError("Ingresa tu contraseña antes de continuar.")
+    if (user_password.trim() === '') {
+      setError('Ingresa tu contraseña antes de continuar.');
       return;
     }
+  
     try {
       Swal.fire({
-        title: "Cargando...",
-        text: "Por favor, espera un momento.",
+        title: 'Cargando...',
+        text: 'Por favor, espera un momento.',
         allowOutsideClick: false,
         showConfirmButton: false,
         willOpen: () => {
           Swal.showLoading();
         },
       });
-
+  
       const response = await fetch(
-        "http://localhost:8080/fitzone/users/login",
+        'http://localhost:8080/fitzone/users/login',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({ user_email, user_password }),
         }
       );
-
+  
       if (response.ok) {
-
         const data = await response.json();
         const token = data.token;
-        localStorage.setItem("token", token);
-        console.log("Inicio de Sesión exitoso");
-
+        localStorage.setItem('token', token);
+        console.log('Inicio de Sesión exitoso');
+  
         const decodedToken = jwtDecode(token);
-        console.log(decodedToken.user_type)
-        // verifica si es admin
+        console.log(decodedToken.user_type);
+  
+        // Verifica si es admin
         if (decodedToken && decodedToken.user_type === 1) {
-          Swal.close()
-          loginAdmin();
-          setIsAdmin(true)
-          console.log(isAdmin)
-          navigate("/Estadisticas");
-          return;
+          // Establece isAdmin antes de redirigir al dashboard
+          setIsAdmin(true);
+          console.log('Es un administrador');
         }
-        Swal.close()
-        login();
-        Swal.fire({
-          title: "Inicio de Sesión exitoso",
-          html: "Redireccionando",
-          icon: "success",
-          timer: 1000,
-          timerProgressBar: true,
-          showConfirmButton: false,
-          onBeforeOpen: () => {
-            Swal.showLoading();
-          },
-        }).then(() => {
-          navigate("/");
-        });
+  
+        Swal.close();
+        console.log('isAdmin después de setIsAdmin:', isAdmin);
+        if (isAdmin) {
+          // Redirige solo si es admin
+          console.log('Redirigiendo al dashboard...');
+          loginAdmin();
+          navigate('/Dashboard');
+        } else {
+          // Si no es admin, realiza las acciones correspondientes
+          login();
+          Swal.fire({
+            title: 'Inicio de Sesión exitoso',
+            html: 'Redireccionando',
+            icon: 'success',
+            timer: 1000,
+            timerProgressBar: true,
+            showConfirmButton: false,
+            onBeforeOpen: () => {
+              Swal.showLoading();
+            },
+          }).then(() => {
+            navigate('/');
+          });
+        }
       } else if (response.status === 401) {
-        Swal.close()
-        setError("La contraseña proporcionada no es correcta. Verifica tu email y contraseña.");
+        Swal.close();
+        setError('La contraseña proporcionada no es correcta. Verifica tu email y contraseña.');
         console.log(error);
       } else if (response.status === 404) {
         Swal.close();
         setError("Correo electrónico no encontrado. Por favor, regístrate antes de iniciar sesión.");
       } else {
-        Swal.close()
+        Swal.close();
         const text = await response.text();
         if (text) {
           const data = JSON.parse(text);
           setError(data.message);
         } else {
-          setError("Error de inicio de sesión. Por favor, inténtalo de nuevo.");
+          setError(
+            'Error de inicio de sesión. Por favor, inténtalo de nuevo.'
+          );
         }
       }
     } catch (error) {
-      Swal.close()
+      Swal.close();
       console.error(error);
-      setError("Error interno. Por favor, inténtalo de nuevo más tarde.");
+      setError(
+        'Error interno. Por favor, inténtalo de nuevo más tarde.'
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
