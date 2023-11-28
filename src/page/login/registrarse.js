@@ -25,6 +25,11 @@ function Registrarse() {
         setError("La contraseña no cumple con los requisitos de seguridad.");
         return;
         }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.(com|es|mx)$/i;
+        if (!emailRegex.test(user_email)) {
+          setError("Por favor, ingresa un correo electrónico válido con terminación .com, .es, o .mx");
+          return;
+        }
         
         try {
             Swal.fire({

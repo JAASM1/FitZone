@@ -137,8 +137,11 @@ function IniciarSesion() {
         });
       } else if (response.status === 401) {
         Swal.close()
-        setError("Credenciales inválidas. Verifica tu email y contraseña.");
+        setError("La contraseña proporcionada no es correcta. Verifica tu email y contraseña.");
         console.log(error);
+      } else if (response.status === 404) {
+        Swal.close();
+        setError("Correo electrónico no encontrado. Por favor, regístrate antes de iniciar sesión.");
       } else {
         Swal.close()
         const text = await response.text();
