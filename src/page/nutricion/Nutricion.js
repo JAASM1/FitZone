@@ -58,6 +58,8 @@ function Nutricion() {
         );
       } else {
         setNutritionData(data);
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
         // Almacena la palabra buscada en la base de datos
         await fetch("http://localhost:8080/fitzone/guardarBusquedaNutricion", {
           method: "POST",
@@ -236,9 +238,16 @@ function Nutricion() {
               </p>
             )}
             {isLoading && (
-              <p className="text-white font-semibold text-xl mx-auto bg-black">
-                Cargando...
+              <div className="flex flex-col items-center">
+              <p className="text-2xl font-Montserrat font-semibold text-white mt-10 mb-2">
+                Cargando
               </p>
+              <div class="flex flex-row gap-2">
+                <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce"></div>
+                <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.2s]"></div>
+                <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.4s]"></div>
+              </div>
+            </div>
             )}
           </div>
         )}

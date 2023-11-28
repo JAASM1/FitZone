@@ -83,6 +83,7 @@ function Calorias() {
         });
       } else {
         setCaloriesData(data); // Guarda los datos en el estado
+        await new Promise((resolve) => setTimeout(resolve, 2000));
         // Almacena la palabra buscada en la base de datos
         await fetch("http://localhost:8080/fitzone/guardarBusquedaCalorias", {
           method: "POST",
@@ -118,17 +119,18 @@ function Calorias() {
       </div>
       <div className="bg-black h-[16.81rem] flex items-center justify-center text-center flex-col">
         <div className="border-[#EFB810] border-2 rounded-3xl p-5 w-[70.5rem] text-white">
-          <p className="pb-5 text-2xl">
-            Explorando el Mundo de las Calorías
-          </p>
+          <p className="pb-5 text-2xl">Explorando el Mundo de las Calorías</p>
           <p className="">
-            En el fascinante universo de la salud y el bienestar, las calorías son una unidad de medida que se convierte en nuestra brújula. No se trata solo de cuántas 
-            calorías quemamos a través de la actividad física, sino de comprender cómo estas pequeñas unidades de energía desempeñan un papel vital en nuestro día a día. 
-            Desde el combustible que nos da vida hasta la forma en que nuestro cuerpo responde a diferentes tipos de actividades, las calorías son la moneda energética 
-            que intercambiamos con el mundo que nos rodea.
+            En el fascinante universo de la salud y el bienestar, las calorías
+            son una unidad de medida que se convierte en nuestra brújula. No se
+            trata solo de cuántas calorías quemamos a través de la actividad
+            física, sino de comprender cómo estas pequeñas unidades de energía
+            desempeñan un papel vital en nuestro día a día. Desde el combustible
+            que nos da vida hasta la forma en que nuestro cuerpo responde a
+            diferentes tipos de actividades, las calorías son la moneda
+            energética que intercambiamos con el mundo que nos rodea.
           </p>
         </div>
-        
       </div>
       {/* Motor de busqueda */}
       <div className="bg-[#EFB810] p-6">
@@ -147,7 +149,13 @@ function Calorias() {
           </div>
         </button>
       </div>
-      <div className={`flex justify-center items-center ${(!loading && !caloriesData) ? 'h-auto bg-black p-10' : 'h-auto bg-black p-10'}`}>
+      <div
+        className={`flex justify-center items-center ${
+          !loading && !caloriesData
+            ? "h-auto bg-black p-10"
+            : "h-auto bg-black p-10"
+        }`}
+      >
         {!loading && !caloriesData && (
           <div className="text-white text-center">
             <p className="text-5xl">No se encontraron resultados</p>
@@ -157,8 +165,15 @@ function Calorias() {
           </div>
         )}
         {loading && (
-          <div className="text-white text-5xl text-center">
-            <p>Cargando...</p>
+          <div className="flex flex-col items-center">
+            <p className="text-2xl font-Montserrat font-semibold text-white mt-10 mb-2">
+              Cargando
+            </p>
+            <div class="flex flex-row gap-2">
+              <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce"></div>
+              <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.2s]"></div>
+              <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.4s]"></div>
+            </div>
           </div>
         )}
         {!loading && caloriesData && (
@@ -169,7 +184,10 @@ function Calorias() {
             )} md:overflow-x-autos md:gap-7 place-content-center`}
           >
             {caloriesData.map((item, index) => (
-              <div key={index} className="bg-[#333] rounded-2xl font-bold w-[400px] h-[200px]">
+              <div
+                key={index}
+                className="bg-[#333] rounded-2xl font-bold w-[400px] h-[200px]"
+              >
                 <div className="relative overflow-hidden flex flex-col justify-center items-center mt-[15%]">
                   <h3 className="text-[#EFB810] text-lg">{item.name}</h3>
                   <p className="text-white">
@@ -189,4 +207,4 @@ function Calorias() {
   );
 }
 
-export default Calorias       
+export default Calorias;

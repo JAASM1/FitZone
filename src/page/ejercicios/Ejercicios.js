@@ -113,12 +113,12 @@ function Ejercicios() {
             <img src={bnnMovilEjercicos} alt="ejercicios" />
           </div>
         </div>
-        <div className="bg-black h-[10rem] p-5">
+        {/* <div className="bg-black h-[10rem] p-5">
           <p className="text-white text-2xl line-clamp-2 text-center font-semibold">
             Aquí obtendrás información sobre los ejercicios que puedes realizar
             <br /> por cada músculo de tu cuerpo
           </p>
-        </div>
+        </div> */}
         <div className="flex flex-col items-center mt-10">
           <div>
             <p className="md:text-4xl text-lg max-md:text-center font-semibold mb-12">
