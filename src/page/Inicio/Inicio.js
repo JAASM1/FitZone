@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import img1 from "../../asset/img/inicio/img1.jpg";
 import img2 from "../../asset/img/inicio/img2.jpg";
 import imgMovil from "../../asset/img/inicio/imgMovil.jpg";
@@ -12,6 +12,8 @@ import iconEjercicio from "../../asset/icons/pesa (1).png";
 import iconNutricion from "../../asset/icons/nutricion.png";
 import iconCalorias from "../../asset/icons/calorias.png";
 import { Link } from "react-router-dom";
+import { useAuth } from '../../Auth'
+import { jwtDecode } from 'jwt-decode'
 
 function Inicio() {
   const ref = useRef(null);
@@ -23,6 +25,26 @@ function Inicio() {
       mainControls.start("visible");
     }
   }, [isInView]);
+
+  const { isLoggedIn } = useAuth()
+  const [username, setUserName] = useState("")
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        const decodedToken = jwtDecode(token);
+        setUserName(decodedToken.user_name);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []); 
+
+
+
   return (
     <div ref={ref}>
       <div className="text-white bg-[#333] font-Montserrat">
@@ -49,11 +71,14 @@ function Inicio() {
               </p>
             </div>
             <div>
-              <Link to="/Iniciar sesion">
-                <button className="border-2 border-[#EFB810] p-2 px-5 rounded-full font-medium">
+              {isLoggedIn ? (
+              <p>Bienvenido, <span className='text-[#EFB810]'>{username}</span> </p>
+            ):             <Link to="/Iniciar sesion">
+              <button className="border-2 border-[#EFB810] p-2 px-5 rounded-full font-medium">
                   Iniciar ahora
                 </button>
-              </Link>
+            </Link>}
+
             </div>
           </motion.div>
           <div className="max-md:hidden">
