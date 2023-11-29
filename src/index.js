@@ -13,7 +13,6 @@ import IniciarSesion from './page/login/iniciosesion';
 import Registrarse from './page/login/registrarse';
 import ContraOlvidado from './page/login/olvidado';
 import Dashboard from './components/Dashboard/Estadisticas.js'
-import Nutri from './components/Dashboard/EstadisticaComponente/EstadisticaNutricion.js'
 import Recover from './page/login/recover.js';
 import Users from './components/Dashboard/users.js'
 
@@ -28,6 +27,7 @@ const AppRoutes = () => {
     {path: '/Contraseña', element: <ContraOlvidado></ContraOlvidado>},
     {path: '/Dashboard' , element: <Dashboard/>},
     {path: '/Users' , element: <Users/>},
+    { path: "/recover/:user_email", element: <Recover /> },
   ])
   return routes
 }
