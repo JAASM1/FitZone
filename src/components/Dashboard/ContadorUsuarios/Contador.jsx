@@ -17,11 +17,11 @@ const Contador = () => {
     contadorUsuarios();
   }, []);
   return (
-    <div className="flex flex-col items-center p-5 font-Montserrat gap-2">
-      <p className="text-white text-2xl text-center font-semibold">
+    <div className="flex flex-col items-center justify-center font-Montserrat">
+      <p className="text-white text-xl text-center font-semibold">
         Usuarios registrados:
       </p>
-      <div className="bg-white w-16 h-16 flex justify-center items-center rounded-lg">
+      <div className="w-16 h-10 flex justify-center items-center rounded-lg">
         <p className="text-[#EFB810] text-4xl font-semibold">{userCount}</p>
       </div>
     </div>

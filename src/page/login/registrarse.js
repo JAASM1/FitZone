@@ -13,6 +13,7 @@ function Registrarse() {
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const userNameValidation = (e) => {
     const newName = e.target.value;
@@ -40,6 +41,10 @@ function Registrarse() {
       setError("Por favor, ingresa todos los campos.");
       return;
     }
+    if (user_password !== confirmPassword) {
+      setError("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+      return;
+    }
     if (user_password.length < 8) {
       setError("La contraseña debe tener al menos 8 caracteres.");
       return;
@@ -60,7 +65,7 @@ function Registrarse() {
         text: "Por favor, espera un momento.",
         allowOutsideClick: false,
         showConfirmButton: false,
-        timer: 3000,
+        timer: 5000,
         willOpen: () => {
           Swal.showLoading();
         },
@@ -153,8 +158,8 @@ function Registrarse() {
               className="bg-[#272733] flex justify-center items-center flex-col px-16 w-[68%] lg:w-[100%] lg:px-40 lg:h-[100%] text-[#EFB810]"
               action=""
             >
-              <h1 className="font-bold text-2xl mb-5">Crea tu cuenta</h1>
-              <span className="text-sm mb-2 text-center text-white">
+              <h1 className="font-bold text-2xl">Crea tu cuenta</h1>
+              <span className="text-sm text-center mb-1 text-white">
                 o utilice su correo electrónico para registrarse
               </span>
               <div className="space-y-5">
@@ -189,6 +194,16 @@ function Registrarse() {
                     className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
                   />
                 </div>
+                <div>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        id="confirmPassword"
+                        placeholder="Confirmar Contraseña"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
+                    />
+                </div>
               </div>
               <span
                 className=" absolute top-[19.2rem] left-[26rem] cursor-pointer"
@@ -202,7 +217,7 @@ function Registrarse() {
               </span>
               {error && <p className="text-red-500 text-xs my-2">{error}</p>}
               <button
-                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 my-5 rounded-lg w-40 font-mono"
+                className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 my-1.5 md:my-5 rounded-lg w-40 font-mono"
                 type="submit"
               >
                 Registrarse

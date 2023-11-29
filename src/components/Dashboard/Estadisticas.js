@@ -6,7 +6,6 @@ import Sidebar from "./side";
 import EstadisticaCalorias from "./EstadisticaComponente/EstadisticaCalorias.js";
 import EstadisticaNutricion from "./EstadisticaComponente/EstadisticaNutricion.js";
 import EstadisticaEjercicios from "./EstadisticaComponente/EstadisticaEjercicios.js";
-import ContadorUsuarios from "./ContadorUsuarios/Contador.jsx";
 
 import { GoAlert } from "react-icons/go";
 import { BsHouse } from "react-icons/bs";
@@ -65,9 +64,6 @@ function Estadisticas() {
           <EstadisticaNutricion />
           <EstadisticaCalorias />
         </section>
-        <div className="md:relative right-[24rem]">
-          <ContadorUsuarios />
-        </div>
       </div>
     </div>
   );
