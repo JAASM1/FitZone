@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
@@ -7,7 +7,6 @@ import { jwtDecode } from "jwt-decode";
 
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { GoogleLoginButton } from "./logingoogle";
-import { decode } from "punycode";
 import { FaHome } from "react-icons/fa";
 
 function IniciarSesion() {
@@ -231,9 +230,9 @@ function IniciarSesion() {
                 <p className="text-red-500 text-[0.6rem] mt-2">{error}</p>
               )}  
 
-              {/* <Link to='/Contraseña'>
+              <Link to='/Contraseña'>
                 <p className="p-2">¿Ha olvidado su contraseña?</p>
-              </Link> */}
+              </Link>
 
               <button
                 className="bg-[#EFB810] cursor-pointer text-[#272733] uppercase p-2 rounded-lg w-40 font-mono mb-3 mt-5"

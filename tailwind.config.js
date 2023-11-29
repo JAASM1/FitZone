@@ -15,7 +15,8 @@ theme: {
     },
     backgroundImage:{
       'image': "url('../src/asset/img/login/pesas.jpg')",
-      'image1': "url('../src/asset/img/login/boxGirl.jpg')"
+      'image1': "url('../src/asset/img/login/boxGirl.jpg')",
+      'image2': "url('../src/asset/img/login/recover.jpg')"
     },
   },
 },
