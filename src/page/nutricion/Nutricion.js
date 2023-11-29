@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import banner from "../../asset/img/nutricion/nutricion-banner.jpg";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
 import { useAuth } from "../../Auth";
+
 import Swal from "sweetalert2";
+import { motion, useInView, useAnimation } from "framer-motion";
+
 import { CiSearch } from "react-icons/ci";
+
 function Nutricion() {
   const [nutrition, setNutrition] = useState("");
   const [nutritionData, setNutritionData] = useState(null);
   const [error, setError] = useState(null);
   const { isLoggedIn } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const mainControls = useAnimation();
 
   const handleInputChange = (e) => {
     setNutrition(e.target.value);
@@ -77,8 +85,14 @@ function Nutricion() {
     }
   };
 
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
+
   return (
-    <div className="font-Montserrat">
+    <div ref={ref} className="font-Montserrat">
       <Navbar />
       {/* banner principal */}
       <div>
@@ -87,21 +101,32 @@ function Nutricion() {
           alt="Tenedor y cinta métrica sobre fondo amarillo"
           className="w-full h-[25rem] md:h-[625px]"
         />
-        <div className="absolute left-[10%] top-[36%]">
-          <div className="w-[11.4375rem] h-[2.9375rem] border border-black flex items-center justify-center">
-            <p className="text-1.5xl leading-normal tracking-wider uppercase text-center ">
-              Nutrición
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 75 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          initial="hidden"
+          animate={mainControls}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="absolute left-[10%] top-[36%] space-y-16"
+        >
+          <div>
+            <div className="w-[11.4375rem] h-[2.9375rem] border border-black flex items-center justify-center">
+              <p className="text-1.5xl leading-normal tracking-wider uppercase text-center ">
+                Nutrición
+              </p>
+            </div>
+          </div>
+          <div>
+            <p className="font-[700] text-white text-[2rem] md:text-[3.75rem]">
+              Empieza una dieta
+            </p>
+            <p className="font-[700] text-white text-[2rem] md:text-[3.75rem]">
+              balanceada hoy
             </p>
           </div>
-        </div>
-        <div className="absolute left-[10%] top-[48%]">
-          <p className="font-[700] text-white text-[2rem] md:text-[3.75rem]">
-            Empieza una dieta
-          </p>
-          <p className="font-[700] text-white text-[2rem] md:text-[3.75rem]">
-            balanceada hoy
-          </p>
-        </div>
+        </motion.div>
       </div>
       {/* beneficios */}
       <div>
@@ -151,7 +176,8 @@ function Nutricion() {
           cual desees saber más.
         </p>
         <p className="w-[10rem] md:w-[60.5rem] text-center text-white font-[100] absolute left-[28%] md:left-[20%] top-[58%] md:top-[50%] text-[0.9rem] md:text-[1rem]">
-          ¡Inténtalo tú mismo! Puedes intentar buscar palabras como "manzana" o "plátano".
+          ¡Inténtalo tú mismo! Puedes intentar buscar palabras como "manzana" o
+          "plátano".
         </p>
         <p className="w-[20rem] md:w-[60.5rem] text-center text-black font-[100] absolute left-[10%] md:left-[20%] top-[85%] md:top-[80%] text-[0.9rem] md:text-[1rem]">
           Toda la información está basada en 100 gramos del alimento buscado.
@@ -187,7 +213,16 @@ function Nutricion() {
         {/* Mapeado de resultados y manejo de errores */}
 
         {!isLoading && !error && nutritionData && nutritionData.length > 0 ? (
-          <div className="w-[19rem] md:w-[31rem] md:h-[14rem] h-[15rem] bg-zinc-700 rounded-xl absolute top-[40%] left-[12%] md:left-[34%]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              delay: 0.3,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+            className="w-[19rem] md:w-[31rem] md:h-[14rem] h-[15rem] bg-zinc-700 rounded-xl absolute top-[40%] left-[12%] md:left-[34%]"
+          >
             {nutritionData.map((item, index) => (
               <div
                 key={index}
@@ -226,7 +261,7 @@ function Nutricion() {
                 Cargando...
               </p>
             )}
-          </div>
+          </motion.div>
         ) : (
           <div className="w-full h-full flex flex-col">
             <h2 className="text-white mt-[15rem] font-semibold text-xl mx-auto">
@@ -239,15 +274,15 @@ function Nutricion() {
             )}
             {isLoading && (
               <div className="flex flex-col items-center">
-              <p className="text-2xl font-Montserrat font-semibold text-white mt-10 mb-2">
-                Cargando
-              </p>
-              <div class="flex flex-row gap-2">
-                <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce"></div>
-                <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.2s]"></div>
-                <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.4s]"></div>
+                <p className="text-2xl font-Montserrat font-semibold text-white mt-10 mb-2">
+                  Cargando
+                </p>
+                <div class="flex flex-row gap-2">
+                  <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce"></div>
+                  <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.2s]"></div>
+                  <div class="w-4 h-4 rounded-full bg-[#EFB810] animate-bounce [animation-delay:-.4s]"></div>
+                </div>
               </div>
-            </div>
             )}
           </div>
         )}

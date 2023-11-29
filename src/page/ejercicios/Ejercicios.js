@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-import bnnEjercicos from "../../asset/img/ejercicios/bnnEjercicio1.jpg";
+import bnnEjercicos from "../../asset/img/ejercicios/bnnEjercicio.webp";
 import bnnMovilEjercicos from "../../asset/img/ejercicios/bnnMovil.jpg";
 
 import Navbar from "../../components/navbar/Navbar";
@@ -334,7 +334,16 @@ function Ejercicios() {
             )}
             {!loading && (
               // Mapeo de data
-              <div className="flex flex-col p-10 items-center gap-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.6,
+                  ease: [0, 0.71, 0.2, 1.01],
+                }}
+                className="flex flex-col p-10 items-center gap-10"
+              >
                 <ul className="md:grid md:grid-cols-2 gap-5 max-md:space-y-5 transition-all ease-in-out">
                   {filtered
                     ?.slice(0, showAllCards ? filtered.length : 4)
@@ -360,19 +369,19 @@ function Ejercicios() {
                       </li>
                     ))}
                 </ul>
-                  {filtered.length > 4 && (
-                    <button
-                      className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black col-span-2"
-                      type="button"
-                      onClick={() => {
-                        setShowAllCards(!showAllCards);
-                        setButtonText(showAllCards ? "Ver más" : "Ver menos");
-                      }}
-                    >
-                      {buttonText}
-                    </button>
-                  )}
-              </div>
+                {filtered.length > 4 && (
+                  <button
+                    className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black col-span-2"
+                    type="button"
+                    onClick={() => {
+                      setShowAllCards(!showAllCards);
+                      setButtonText(showAllCards ? "Ver más" : "Ver menos");
+                    }}
+                  >
+                    {buttonText}
+                  </button>
+                )}
+              </motion.div>
             )}
           </div>
         </div>
