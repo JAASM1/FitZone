@@ -137,7 +137,7 @@ function Inicio() {
                   alt="icono nutricion"
                   className="w-12"
                 ></img>
-                <p className="text-lg uppercase font-medium">Nutricion</p>
+                <p className="text-lg uppercase font-medium">Nutrición</p>
                 <p className="text-sm font-light text-center">
                   Ofrecer recetas y detalles nutricionales para una alimentación
                   saludable
@@ -158,7 +158,7 @@ function Inicio() {
                   alt="icono calorias"
                   className="w-12"
                 ></img>
-                <p className="text-lg uppercase font-medium">Calorias</p>
+                <p className="text-lg uppercase font-medium">Calorías</p>
                 <p className="text-sm font-light text-center">
                   Calcular y mostrar la cantidad de calorías quemadas durante
                   diferentes actividades físicas

@@ -13,6 +13,7 @@ function Registrarse() {
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [passwordConfirm, setPasswordConfirm] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
 
   //Validacion del nombre de usuario
@@ -125,6 +126,9 @@ function Registrarse() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const togglePasswordConfirmVisibility = () => {
+    setPasswordConfirm(!passwordConfirm);
+  };
 
   const [hovered, setHovered] = useState(false);
 
@@ -198,7 +202,7 @@ function Registrarse() {
                 </div>
                 <div>
                     <input
-                        type={showPassword ? "text" : "password"}
+                        type={passwordConfirm ? "text" : "password"}
                         id="confirmPassword"
                         placeholder="Confirmar Contraseña"
                         value={confirmPassword}
@@ -208,10 +212,20 @@ function Registrarse() {
                 </div>
               </div>
               <span
-                className=" absolute top-[19.2rem] left-[26rem] cursor-pointer"
+                className=" absolute top-[16.3rem] left-[28.5rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
+                  <AiOutlineEyeInvisible className="h-[1rem] text-gray-400" />
+                ) : (
+                  <AiOutlineEye className="h-[1rem] text-gray-400" />
+                )}
+              </span>
+              <span
+                className=" absolute top-[20.2rem] left-[28.5rem] cursor-pointer"
+                onClick={togglePasswordConfirmVisibility}
+              >
+                {passwordConfirm ? (
                   <AiOutlineEyeInvisible className="h-[1rem] text-gray-400" />
                 ) : (
                   <AiOutlineEye className="h-[1rem] text-gray-400" />

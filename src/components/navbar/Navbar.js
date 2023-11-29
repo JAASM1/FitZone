@@ -91,12 +91,12 @@ function Navbar() {
                 </div>
                 <div>
                     <Link to = '/Nutricion'>
-                        <p className='text-white uppercase font-medium'>Nutricion</p>
+                        <p className='text-white uppercase font-medium'>Nutrición</p>
                     </Link>
                 </div>
                 <div className=''>
                     <Link to = '/Calorias'>
-                        <p className='text-white uppercase font-medium'>Calorias</p>
+                        <p className='text-white uppercase font-medium'>Calorías</p>
                     </Link>
                 </div>
             </div>
