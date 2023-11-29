@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import { useAuth } from "../../Auth";
 import fondo from "../../asset/img/calorias/pesomuerto.jpg";
-import { GrSearch } from "react-icons/gr";
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/footer";
+
+import React, { useState, useEffect, useRef } from "react";
+
+import { motion, useInView, useAnimation } from "framer-motion";
 import Swal from "sweetalert2";
-import { useAuth } from "../../Auth";
+
+import { GrSearch } from "react-icons/gr";
 
 function Calorias() {
   const [activity, setActivity] = useState(""); // Inicializa con una cadena vacía
   const [caloriesData, setCaloriesData] = useState(null);
   const [loading, setLoading] = useState(false);
   const { isLoggedIn } = useAuth();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const mainControls = useAnimation();
+
   const handleInputChange = (e) => {
     setActivity(e.target.value); // Actualiza el estado 'activity' con el valor del campo de entrada
   };
@@ -100,22 +108,37 @@ function Calorias() {
     }
   };
 
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
+
   return (
     <div className="font-Montserrat">
       <Navbar />
       {/* banner principal */}
-      <div>
+      <div ref={ref}>
         <div>
           <img src={fondo} alt="" />
         </div>
-        <div className="absolute inset-0 text-2xl justify-center top-1/3 font-bold grid sm:top-80 sm:text-4xl md:text-6xl md:justify-center md:items-end md:ml-[30%]">
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 75 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          initial="hidden"
+          animate={mainControls}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="absolute inset-0 text-2xl justify-center top-1/3 font-bold grid sm:top-80 sm:text-4xl md:text-6xl md:justify-center md:items-end md:ml-[30%]"
+        >
           <p>
             <span className="text-[#EFB810]">Construye</span>{" "}
             <span className="text-white">tu mejor versión</span> <br />
             <span className="text-white">este año</span>{" "}
             <span className="text-[#EFB810]">sin excusas</span>
           </p>
-        </div>
+        </motion.div>
       </div>
       <div className="bg-black h-[16.81rem] flex items-center justify-center text-center flex-col">
         <div className="border-[#EFB810] border-2 rounded-3xl p-5 w-[70.5rem] text-white">
@@ -177,7 +200,14 @@ function Calorias() {
           </div>
         )}
         {!loading && caloriesData && (
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              delay: 0.3,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
             className={`grid md:grid-cols-${Math.min(
               caloriesData.length,
               3
@@ -199,7 +229,7 @@ function Calorias() {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         )}
       </div>
       <Footer />

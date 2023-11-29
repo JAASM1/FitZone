@@ -45,7 +45,10 @@ function Estadisticas() {
           <span className="text-[#EFB810]">Acceso denegado.</span> <br />
           No tienes los permisos necesarios.
         </h1>
-        <a href="/" className="flex items-center gap-2 bg-[#EFB810] py-1 px-2 rounded-2xl transition-all ease-out hover:-translate-y-2 hover:scale-110 shadow-md hover:shadow-yellow-900">
+        <a
+          href="/"
+          className="flex items-center gap-2 bg-[#EFB810] py-1 px-2 rounded-2xl transition-all ease-out hover:-translate-y-2 hover:scale-110 shadow-md hover:shadow-yellow-900"
+        >
           <BsHouse className="text-2xl text-white" />
           <p className="text-white font-semibold">Regresemos</p>
         </a>
@@ -53,13 +56,13 @@ function Estadisticas() {
     );
   }
   return (
-    <div className="flex font-Montserrat bg-zinc-800">
+    <div className="flex font-Montserrat">
       <Sidebar />
-      <div className="w-[full] min-h-min relative md:m-10 m-2 md:ml-[15rem] flex flex-col items-center">
+      <div className="w-[full] min-h-min relative md:m-10 m-2 md:ml-[11rem] flex flex-col items-center gap-10">
         <h1 className="md:text-5xl text-3xl max-md:text-center font-bold text-[#EFB810] md:mb-[4rem] mb-5">
-          Palabras mas buscadas
+          Palabras más buscadas{" "}
         </h1>
-        <section className="md:flex gap-20 max-md:space-y-5 md:mb-10">
+        <section className="md:flex gap-28 max-md:space-y-5 md:mb-10">
           <EstadisticaEjercicios />
           <EstadisticaNutricion />
           <EstadisticaCalorias />
