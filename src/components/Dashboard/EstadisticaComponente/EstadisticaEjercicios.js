@@ -1,63 +1,127 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import Wordcloud from "react-wordcloud";
+import * as d3 from "d3";
+import cloud from "d3-cloud";
 
 function EstadisticaEjercicios() {
   const [wordData, setWordData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [tooltip, setTooltip] = useState({
+    show: false,
+    text: "",
+  });
+
+  const svgRef = useRef(null);
 
   useEffect(() => {
     const obtenerTopPalabras = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:8080/fitzone/topEjercicios");
+        const response = await axios.get(
+          "http://localhost:8080/fitzone/topEjercicios"
+        );
         console.log("Datos recibidos:", response.data);
-    
+
         const topButtons = response.data.topWords || [];
         const formattedData = topButtons.map((word, index) => ({
           text: word.word,
           value: word.frequency,
           key: index.toString(),
         }));
-    
+
         setWordData(formattedData);
         console.log("wordData actualizado:", wordData);
         setLoading(false);
       } catch (error) {
-        console.error("Error al obtener las top palabras de ejercicios:", error);
+        console.error(
+          "Error al obtener las top palabras de ejercicios:",
+          error
+        );
         setLoading(false);
       }
     };
-        
 
     obtenerTopPalabras();
   }, []);
 
+  useEffect(() => {
+    if (svgRef.current && wordData.length > 0) {
+      const layout = cloud()
+        .size([300, 300])
+        .words(wordData)
+        .rotate(() => 0)
+        .font("Montserrat")
+        .fontWeight("bold")
+        .fontSize((d) => Math.min(d.value * 2, 30))
+        .spiral("rectangular")
+        .on("end", (words) => {
+          d3.select(svgRef.current).selectAll("*").remove();
+
+          const containerWidth = 300;
+          const containerHeight = 300;
+          const centerX = containerWidth / 2;
+          const centerY = containerHeight / 2;
+
+          const wordGroup = d3
+            .select(svgRef.current)
+            .append("g")
+            .attr("transform", `translate(${centerX},${centerY})`);
+
+          wordGroup
+            .selectAll("text")
+            .data(words)
+            .enter()
+            .append("text")
+            .style("font-family", "Montserrat")
+            .style("font-weight", "bold")
+            .style("font-size", (d) => d.size)
+            .style(
+              "transform",
+              (d) => `translate(${d.x}px, ${d.y}px) rotate(${d.rotate}deg)`
+            )
+            .style("text-anchor", "middle")
+            .style("fill", (d) => d.fill)
+            .text((d) => d.text)
+            .on("mouseover", (event, d) => {
+              const [x, y] = [d.x + centerX, d.y + centerY];
+              setTooltip({ show: true, text: `Buscada: ${d.value}`, x, y });
+            })
+            .on("mouseout", () => {
+              setTooltip({ show: false, text: "" });
+            });
+        });
+
+      layout.start();
+    }
+  }, [wordData]);
+
   return (
     <div className="flex flex-col items-center md:gap-5 gap-3 font-Montserrat">
-      <h3 className="md:text-4xl text-3xl font-semibold text-white">
+      <h3 className="md:text-4xl text-3xl font-semibold">
         Ejercicios
       </h3>
       {loading ? (
         <p>Cargando...</p>
       ) : (
-        <div className="border shadow-lg rounded-full md:w-[300px] md:h-[300px] w-[250px] h-[250px] bg-white">
-          <Wordcloud
-            words={wordData}
-            options={{
-              wordScale: "sqrt",
-              fontFamily: "Montserrat",
-              fontWeight: "bold",
-            }}
-            style={{
-              width: "auto",
-              height: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "10px", // Ajusta el espaciado general
-            }}
+        <div className="shadow-lg md:w-[300px] md:h-[300px] w-[250px] h-[250px]">
+          <svg
+            className="capitalize animate-pulls"
+            ref={svgRef}
+            width="100%"
+            height="100%"
+            style={{ padding: "1px" }}
           />
+          {tooltip.show && (
+            <div
+              className="absolute text-black p-1"
+              style={{
+                top: tooltip.y + 135 + "px",
+                left: tooltip.x - 25 + "px",
+              }}
+            >
+              {tooltip.text}
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -14,6 +14,7 @@ function Registrarse() {
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
+  //Validacion del nombre de usuario
   const userNameValidation = (e) => {
     const newName = e.target.value;
     if (
@@ -158,6 +159,7 @@ function Registrarse() {
                 o utilice su correo electrónico para registrarse
               </span>
               <div className="space-y-5">
+                {/* Nombre de usuario */}
                 <div className="space-y-1 text-center">
                   <input
                     type="text"
@@ -167,7 +169,7 @@ function Registrarse() {
                     onChange={userNameValidation}
                     className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
                   />
-                  {error && <p className="text-xs text-red-500">{errorName}</p>}
+                  {errorName && <p className="text-xs text-red-500">{errorName}</p>}
                 </div>
                 <div>
                   <input
