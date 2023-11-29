@@ -15,6 +15,7 @@ import ContraOlvidado from './page/login/olvidado';
 import Dashboard from './components/Dashboard/Estadisticas.js'
 import Nutri from './components/Dashboard/EstadisticaComponente/EstadisticaNutricion.js'
 import Recover from './page/login/recover.js';
+import Users from './components/Dashboard/users.js'
 
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -26,6 +27,7 @@ const AppRoutes = () => {
     {path: '/Registrarse' , element: <Registrarse></Registrarse>},
     {path: '/Contraseña', element: <ContraOlvidado></ContraOlvidado>},
     {path: '/Dashboard' , element: <Dashboard/>},
+    {path: '/Users' , element: <Users/>},
   ])
   return routes
 }
