@@ -46,6 +46,8 @@ function EstadisticaEjercicios() {
 
   useEffect(() => {
     if (svgRef.current && wordData.length > 0) {
+      const colorScale = d3.interpolateRainbow;
+  
       const layout = cloud()
         .size([300, 300])
         .words(wordData)
@@ -56,17 +58,17 @@ function EstadisticaEjercicios() {
         .spiral("rectangular")
         .on("end", (words) => {
           d3.select(svgRef.current).selectAll("*").remove();
-
+  
           const containerWidth = 300;
           const containerHeight = 300;
           const centerX = containerWidth / 2;
           const centerY = containerHeight / 2;
-
+  
           const wordGroup = d3
             .select(svgRef.current)
             .append("g")
             .attr("transform", `translate(${centerX},${centerY})`);
-
+  
           wordGroup
             .selectAll("text")
             .data(words)
@@ -80,7 +82,7 @@ function EstadisticaEjercicios() {
               (d) => `translate(${d.x}px, ${d.y}px) rotate(${d.rotate}deg)`
             )
             .style("text-anchor", "middle")
-            .style("fill", (d) => d.fill)
+            .style("fill", () => colorScale(Math.random())) // Asigna color aleatorio
             .text((d) => d.text)
             .on("mouseover", (event, d) => {
               const [x, y] = [d.x + centerX, d.y + centerY];
@@ -90,7 +92,7 @@ function EstadisticaEjercicios() {
               setTooltip({ show: false, text: "" });
             });
         });
-
+  
       layout.start();
     }
   }, [wordData]);
