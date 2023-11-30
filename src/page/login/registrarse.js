@@ -1,40 +1,26 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaHome } from "react-icons/fa";
 
 function Registrarse() {
   const navigate = useNavigate();
   const [user_name, setUserName] = useState("");
-  const [errorName, setErrorName] = useState("");
   const [user_email, setEmail] = useState("");
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [passwordConfirm, setPasswordConfirm] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
-  //Validacion del nombre de usuario
-  const userNameValidation = (e) => {
-    const newName = e.target.value;
-    if (
-      newName.length < 6 ||
-      !/^[a-zA-Z0-9]+$/.test(newName) ||
-      /\s/.test(newName)
-    ) {
-      setErrorName(
-        "El nombre tiene que tener al menos 6 caracteres, sin caracteres especiales."
-      );
-    } else {
-      setError("");
-    }
-    setUserName(newName);
-  };
+  // Validacion del nombre de usuario
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setFormSubmitted(true);
     if (
       user_email.trim() === "" ||
       user_password.trim() === "" ||
@@ -51,6 +37,17 @@ function Registrarse() {
       setError("La contraseña debe tener al menos 8 caracteres.");
       return;
     }
+    // Validación del nombre de usuario
+    if (
+      user_name.length < 6 ||
+      !/^[a-zA-Z0-9]+$/.test(user_name) ||
+      /\s/.test(user_name)
+    ) {
+      setError(
+        "El nombre tiene que tener al menos 6 caracteres, sin caracteres especiales."
+      );
+      return;
+    }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.(com|es|mx)$/i;
     if (!emailRegex.test(user_email)) {
@@ -61,7 +58,7 @@ function Registrarse() {
     }
 
     try {
-      //Alerta de carga
+      // Alerta de carga
       Swal.fire({
         title: "Cargando...",
         text: "Por favor, espera un momento.",
@@ -114,7 +111,6 @@ function Registrarse() {
             title: "Error de registro",
             text: "Por favor, inténtalo de nuevo.",
           });
-  
         }
       }
     } catch (error) {
@@ -175,10 +171,9 @@ function Registrarse() {
                     id="nombre"
                     placeholder="Nombre de usuario"
                     value={user_name}
-                    onChange={userNameValidation}
+                    onChange={(e) => setUserName(e.target.value)}
                     className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
                   />
-                  {errorName && <p className="text-xs text-red-500">{errorName}</p>}
                 </div>
                 <div>
                   <input
@@ -201,18 +196,18 @@ function Registrarse() {
                   />
                 </div>
                 <div>
-                    <input
-                        type={passwordConfirm ? "text" : "password"}
-                        id="confirmPassword"
-                        placeholder="Confirmar Contraseña"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
-                    />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="confirmPassword"
+                    placeholder="Confirmar Contraseña"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
+                  />
                 </div>
               </div>
               <span
-                className=" absolute top-[16.3rem] left-[28.5rem] cursor-pointer"
+                className=" absolute top-[16.3rem] left-[26rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
@@ -222,7 +217,7 @@ function Registrarse() {
                 )}
               </span>
               <span
-                className=" absolute top-[20.2rem] left-[28.5rem] cursor-pointer"
+                className=" absolute top-[20.2rem] left-[26rem] cursor-pointer"
                 onClick={togglePasswordConfirmVisibility}
               >
                 {passwordConfirm ? (
