@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <div className='bg-[#333] py-14 text-white flex flex-col gap-y-7 font-Montserrat tracking-[1.5px]'>
-        <div className='flex justify-center items-center'>
-            <a href="#" className='border-[#EFB810] border-2 text-white font-bold uppercase md:text-sm text-xs md:px-24 md:py-4 px-12 py-2 rounded-xl'>Arriba</a>
-        </div>
-        
+    <div className='bg-zinc-800 py-14 text-white flex flex-col gap-y-7 font-Montserrat tracking-[1.5px]'>        
         <div className='grid md:grid-cols-3 mx-16'>
           <div className='flex flex-col items-center md:gap-12 gap-5'>
             <p className='font-bold uppercase'>Siguenos</p>
