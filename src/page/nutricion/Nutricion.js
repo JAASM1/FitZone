@@ -142,7 +142,7 @@ function Nutricion() {
               <p className="text-white font-[100] text-[0.8rem] w-[11rem] ml-7 mr-7">
                 Una alimentación equilibrada, rica en frutas, verduras, granos
                 enteros y proteínas magras, puede reducir el riesgo de
-                enfermedades cardiovasculares.
+                enfermedades cardiovasculares
               </p>
             </div>
             <div className="w-[14.25rem] h-[14.25rem] rounded-[1.25rem] border border-amber-300 ">

@@ -204,18 +204,10 @@ function Registrarse() {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
                   />
-                    <input
-                        type={passwordConfirm ? "text" : "password"}
-                        id="confirmPassword"
-                        placeholder="Confirmar Contraseña"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
-                    />
                 </div>
               </div>
               <span
-                className=" absolute top-[16.3rem] left-[28.5rem] cursor-pointer"
+                className=" absolute top-[16.3rem] left-[26rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
@@ -225,7 +217,7 @@ function Registrarse() {
                 )}
               </span>
               <span
-                className=" absolute top-[20.2rem] left-[28.5rem] cursor-pointer"
+                className=" absolute top-[20.2rem] left-[26rem] cursor-pointer"
                 onClick={togglePasswordConfirmVisibility}
               >
                 {passwordConfirm ? (

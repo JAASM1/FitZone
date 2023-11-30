@@ -139,8 +139,8 @@ function Inicio() {
                 ></img>
                 <p className="text-lg uppercase font-medium">Nutrición</p>
                 <p className="text-sm font-light text-center">
-                  Ofrecer recetas y detalles nutricionales para una alimentación
-                  saludable
+                  Ofrecer detalles nutricionales sobre alimentos para una
+                  alimentación saludable{" "}
                 </p>
               </motion.div>
               <motion.div

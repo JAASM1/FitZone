@@ -286,7 +286,7 @@ function Ejercicios() {
               <div className="flex gap-5">
                 <div className="space-x-2">
                   <label htmlFor="equipment" className="text-xl">
-                    Type:
+                    Tipo:
                   </label>
                   <select
                     id="equipment"
@@ -294,15 +294,15 @@ function Ejercicios() {
                     onChange={handleTypeChange}
                     className="bg-zinc-900 text-lg outline-[#EFB810] rounded-xl px-2 py-1 text-center"
                   >
-                    <option value="">All</option>
-                    <option value="strength">Strength</option>
-                    <option value="stretching">Stretching</option>
+                    <option value="">Todos</option>
+                    <option value="strength">Fuerza</option>
+                    <option value="stretching">Estiramientos</option>
                     <option value="powerlifting">Powerlifting</option>
                   </select>
                 </div>
                 <div className="space-x-2">
                   <label htmlFor="difficulty" className="text-xl">
-                    Difficulty:
+                  Dificultad:
                   </label>
                   <select
                     id="difficulty"
@@ -310,10 +310,10 @@ function Ejercicios() {
                     onChange={handleDifficultyChange}
                     className="bg-zinc-900 text-lg outline-[#EFB810] rounded-xl px-3 py-1 text-center"
                   >
-                    <option value="">All</option>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="expert">Expert</option>
+                    <option value="">Todos</option>
+                    <option value="beginner">Principiante</option>
+                    <option value="intermediate">Intermedio</option>
+                    <option value="expert">Experto</option>
                   </select>
                 </div>
               </div>
