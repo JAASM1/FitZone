@@ -140,7 +140,7 @@ function Dashboard() {
                   <th className="pl-10">Acciones</th>
                 </tr>
               </thead>
-              <tbody className=''>
+              <tbody className='my-5'>
                 {users.map((user) => (
                   <tr key={user.id_user} className="">
                     <td>{user.id_user}</td>
@@ -148,7 +148,7 @@ function Dashboard() {
                     <td>{user.user_email}</td>
                     <td className="pl-10">
                       <button
-                        className="bg-blue-600 h-9 w-20 rounded-xl mr-5 hover:-translate-y-1 hover:scale-110 transition-all"
+                        className="bg-blue-600 h-9 w-20 rounded-xl mr-5 hover:-translate-y-1 hover:scale-110 transition-all my-2"
                         onClick={() => openEditModal(user)}
                       >
                         Editar
