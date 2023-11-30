@@ -13,7 +13,6 @@ import Swal from "sweetalert2";
 
 function Ejercicios() {
   const [count, setCount] = useState(""); // variables recibe el valor del button
-  const [data, setData] = useState(); //variables de extraccion de datos de la api
 
   const [loading, setLoading] = useState(false);
 
@@ -157,7 +156,7 @@ function Ejercicios() {
                   handleButtonClick("abdominals");
                 }}
               >
-                Abdominals
+                Abdominales
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -175,7 +174,7 @@ function Ejercicios() {
                   handleButtonClick("chest");
                 }}
               >
-                Chest
+                Pecho
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -184,7 +183,7 @@ function Ejercicios() {
                   handleButtonClick("calves");
                 }}
               >
-                Calves
+                Pantorrillas
               </button>
             </div>
             <div className="md:flex grid grid-cols-2 gap-5">
@@ -195,7 +194,7 @@ function Ejercicios() {
                   handleButtonClick("forearms");
                 }}
               >
-                Forearms
+                Antebrazos
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -204,7 +203,7 @@ function Ejercicios() {
                   handleButtonClick("glutes");
                 }}
               >
-                Glutes
+                Glúteos
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -213,7 +212,7 @@ function Ejercicios() {
                   handleButtonClick("hamstrings");
                 }}
               >
-                Hamstrings
+                Isquiotibiales
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -222,7 +221,7 @@ function Ejercicios() {
                   handleButtonClick("lower_back");
                 }}
               >
-                Lower back
+                Espalda baja
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -231,7 +230,7 @@ function Ejercicios() {
                   handleButtonClick("lats");
                 }}
               >
-                Lats
+                Dorsales
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -240,7 +239,7 @@ function Ejercicios() {
                   handleButtonClick("middle_back");
                 }}
               >
-                Middle back
+                Espalda media
               </button>
             </div>
             <div className="md:flex grid grid-cols-2 gap-5">
@@ -251,7 +250,7 @@ function Ejercicios() {
                   handleButtonClick("neck");
                 }}
               >
-                Neck
+                Cuello
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
@@ -269,7 +268,7 @@ function Ejercicios() {
                   handleButtonClick("traps");
                 }}
               >
-                Traps
+                Trapecios
               </button>
               <button
                 className="btnStyles btnAnimation bg-black focus:bg-[#EFB810] hover:focus:shadow-amber-900 focus:text-black"
