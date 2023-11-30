@@ -144,7 +144,7 @@ function IniciarSesion() {
         }
       } else if (response.status === 401) {
         Swal.close();
-        setError('La contraseña proporcionada no es correcta. Verifica tu email y contraseña.');
+        setError('Credenciales incorrectas, verifica tu email y contraseña');
         console.log(error);
       } else if (response.status === 404) {
         Swal.close();
@@ -216,7 +216,7 @@ function IniciarSesion() {
                 className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
               />
               <span
-                className=" absolute top-[14.9rem] left-[21.4rem] cursor-pointer"
+                className=" absolute top-[12.8rem] left-[21.4rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (

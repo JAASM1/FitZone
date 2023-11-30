@@ -12,6 +12,7 @@ function Registrarse() {
   const [user_password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [passwordConfirm, setPasswordConfirm] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -121,6 +122,9 @@ function Registrarse() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const togglePasswordConfirmVisibility = () => {
+    setPasswordConfirm(!passwordConfirm);
+  };
 
   const [hovered, setHovered] = useState(false);
 
@@ -200,13 +204,31 @@ function Registrarse() {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
                   />
+                    <input
+                        type={passwordConfirm ? "text" : "password"}
+                        id="confirmPassword"
+                        placeholder="Confirmar Contraseña"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        className="bg-transparent border-[#EFB810] border-2 w-[100%] outline-none mx-15 p-2 rounded-md font-mono"
+                    />
                 </div>
               </div>
               <span
-                className=" absolute top-[19.2rem] left-[26rem] cursor-pointer"
+                className=" absolute top-[16.3rem] left-[28.5rem] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
+                  <AiOutlineEyeInvisible className="h-[1rem] text-gray-400" />
+                ) : (
+                  <AiOutlineEye className="h-[1rem] text-gray-400" />
+                )}
+              </span>
+              <span
+                className=" absolute top-[20.2rem] left-[28.5rem] cursor-pointer"
+                onClick={togglePasswordConfirmVisibility}
+              >
+                {passwordConfirm ? (
                   <AiOutlineEyeInvisible className="h-[1rem] text-gray-400" />
                 ) : (
                   <AiOutlineEye className="h-[1rem] text-gray-400" />
