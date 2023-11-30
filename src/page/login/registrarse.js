@@ -197,7 +197,7 @@ function Registrarse() {
                 </div>
                 <div>
                   <input
-                    type={showPassword ? "text" : "password"}
+                    type={passwordConfirm ? "text" : "password"}
                     id="confirmPassword"
                     placeholder="Confirmar Contraseña"
                     value={confirmPassword}
